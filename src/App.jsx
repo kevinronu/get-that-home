@@ -13,7 +13,7 @@ import AuthenticatedLandlordApp from "./AuthenticatedLandlordApp";
 import AuthenticatedSeekerApp from "./AuthenticatedSeekerApp";
 
 function App() {
-  const [darkMode, SetDarkMode] = useState(isDarkModeActive());
+  const [darkMode] = useState(isDarkModeActive());
   const { user } = useContext(AuthContext);
 
   return (

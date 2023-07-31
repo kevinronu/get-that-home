@@ -54,6 +54,7 @@ function AuthProvider(props) {
       .then(() => {
         sessionStorage.removeItem(tokenKey);
         setUser(null);
+        navigate("/home");
       })
       .catch(console.log);
   }

@@ -37,7 +37,7 @@ export const StyledLink = styled(Link)`
   }
 
   .photo {
-    max-height: 12.5rem;
+    height: 12.5rem;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 0.5rem;
@@ -97,16 +97,4 @@ export const OwnerMenu = styled.div`
   align-items: center;
   padding-top: 0.4rem;
   justify-content: space-evenly;
-
-  .owner_menu__edit {
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-  }
-
-  .owner_menu__close {
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
-  }
 `;

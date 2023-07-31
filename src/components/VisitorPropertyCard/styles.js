@@ -33,7 +33,7 @@ export const StyledLink = styled(Link)`
   }
 
   .photo {
-    max-height: 12.5rem;
+    height: 12.5rem;
     width: 100%;
     object-fit: cover;
     border-top-left-radius: 0.5rem;

@@ -32,7 +32,7 @@ function LandlordPropertyCard({ property, isOwner }) {
     bathrooms,
     area,
     pets_allowed,
-    close,
+    closed,
     images,
   } = property;
 
@@ -92,7 +92,7 @@ function LandlordPropertyCard({ property, isOwner }) {
   };
 
   const renderSecondElement = {
-    close: (
+    closed: (
       <Button
         icon={
           <RiCloseCircleLine
@@ -162,8 +162,8 @@ function LandlordPropertyCard({ property, isOwner }) {
       </StyledLink>
       {isOwner ? (
         <OwnerMenu>
-          {close ? renderFirstElement.restore : renderFirstElement.edit}
-          {close ? renderSecondElement.delete : renderSecondElement.close}
+          {closed ? renderFirstElement.restore : renderFirstElement.edit}
+          {closed ? renderSecondElement.delete : renderSecondElement.closed}
         </OwnerMenu>
       ) : null}
     </StyledContainer>

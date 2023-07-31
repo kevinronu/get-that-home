@@ -7,7 +7,8 @@ const LandlordContext = createContext();
 
 function LandlordProvider(props) {
   const [myProperties, setMyProperties] = useState([]);
-  const { createProperty, deleteProperty } = useContext(AuthContext);
+  const { createProperty, deleteProperty, closeProperty, restoreProperty } =
+    useContext(AuthContext);
 
   useEffect(() => {
     propertyServices
@@ -38,6 +39,7 @@ function LandlordProvider(props) {
         );
         newMyProperties = [...newMyProperties, property];
         setMyProperties(newMyProperties);
+        closeProperty(property);
       })
       .catch(console.log);
   }
@@ -51,6 +53,7 @@ function LandlordProvider(props) {
         );
         newMyProperties = [...newMyProperties, property];
         setMyProperties(newMyProperties);
+        restoreProperty(property);
       })
       .catch(console.log);
   }

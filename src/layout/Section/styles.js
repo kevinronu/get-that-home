@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 
 function sizeSection(size) {
   switch (size) {
+    case "0":
+      return `0`;
     case "xs":
       return `16px 0`;
     case "sm":

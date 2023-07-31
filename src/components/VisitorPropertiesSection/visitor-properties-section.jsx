@@ -23,23 +23,25 @@ export default function VisitorPropertiesSection() {
   return (
     <Section size="xs">
       <Container size="xl" padding={"1rem"}>
-        <div>Filters</div>
-        <StyledH2>{totalQuantity} Properties found</StyledH2>
-        <PropertiesContainer>
-          {properties.slice(firstIndex, lastIndex).map((property) => {
-            return (
-              <VisitorPropertyCard
-                key={`property-${property.id}`}
-                property={property}
-              />
-            );
-          })}
-        </PropertiesContainer>
-        <Pagination
-          quantityPerPage={quantityPerPage}
-          totalQuantity={totalQuantity}
-          location={"/properties"}
-        />
+        <>
+          <div>Filters</div>
+          <StyledH2>{totalQuantity} Properties found</StyledH2>
+          <PropertiesContainer>
+            {properties.slice(firstIndex, lastIndex).map((property) => {
+              return (
+                <VisitorPropertyCard
+                  key={`property-${property.id}`}
+                  property={property}
+                />
+              );
+            })}
+          </PropertiesContainer>
+          <Pagination
+            quantityPerPage={quantityPerPage}
+            totalQuantity={totalQuantity}
+            location={"/properties"}
+          />
+        </>
       </Container>
     </Section>
   );

@@ -9,7 +9,7 @@ function Footer() {
   return (
     <StyledFooter>
       <Container size={"xl"}>
-        <div>
+        <>
           <StyledDiv>
             <div className="logo">
               <Logo size="sm" />
@@ -41,7 +41,7 @@ function Footer() {
               </Link>
             </div>
           </StyledDiv>
-        </div>
+        </>
       </Container>
     </StyledFooter>
   );

@@ -17,7 +17,8 @@ function AuthenticatedSeekerApp() {
           <Route path="home" element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="properties">
-            <Route index element={<PropertiesPage />} />
+            <Route index element={<Navigate to="page/1" />} />
+            <Route path="page/:page" element={<PropertiesPage />} />
           </Route>
           <Route path="property">
             <Route path="detail/:id" element={<PropertyDetailPage />} />

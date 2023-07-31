@@ -6,24 +6,23 @@ export const StyledSection = styled.section`
   padding: 1rem 0;
 `;
 
-export const StyledInput = styled.input`
-  all: unset;
-  display: none;
-`;
+export const StyledNav = styled.div`
+  margin-top: 1rem;
 
-export const BoxOptions = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  ${typography.text.sm}
-  font-weight: 500;
-  margin-bottom: 1rem;
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    ${typography.text.sm}
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
 
-  .active {
+  .link--active {
     border: 0.125rem solid ${(props) => props.theme.colors.pink[500]};
   }
 
-  .inactive {
+  .link--inactive {
     border: 0.125rem solid ${(props) => props.theme.colors.text.light};
   }
 `;

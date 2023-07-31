@@ -1,97 +1,83 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   PropertiesContainer,
   StyledSection,
-  BoxOptions,
+  StyledNav,
   StyledH2,
   StyledLinkInactive,
   StyledLinkActive,
 } from "./styles";
 import Container from "../../layout/Container/container";
-import PropertyCard from "../PropertyCard";
+import LandlordPropertyCard from "../LandlordPropertyCard";
 import Pagination from "../Pagination";
-import { getMyProperties } from "../../services/property-service";
+import { LandlordContext } from "../../context/landlord-context";
+import Anchor from "../Anchor";
 
 export default function MyClosedPropertiesSection() {
-  const [products, setProducts] = useState([]);
-  const [totalProducts, setTotalProducts] = useState(0);
-  const [productsPerpage, setProductsPerpage] = useState(12);
-  const [currentPage, setCurrentPage] = useState(
-    sessionStorage.getItem("seekerCurrentPage")
-      ? sessionStorage.getItem("seekerCurrentPage")
-      : 1
-  );
+  const { page } = useParams();
+  const { myProperties } = useContext(LandlordContext);
+  const [myClosedProperties, setMyClosedProperties] = useState([]);
+  const [quantityPerPage] = useState(12);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const lastIndex = page * quantityPerPage;
+  const firstIndex = lastIndex - quantityPerPage;
 
   useEffect(() => {
-    const actProducts = [];
-
-    getMyProperties()
-      .then((property) => {
-        property.forEach((property) => {
-          if (property.close) {
-            actProducts.push(property);
-          }
-        });
-        sessionStorage.setItem("seekerCurrentPage", 1);
-        setProducts(actProducts);
-      })
-      .catch(console.log);
-  }, []);
-
-  useEffect(() => {
-    const totalProducts = products.length;
-    setTotalProducts(totalProducts);
-    setCurrentPage(1);
-  }, [products]);
-
-  function handleDeleteProperty(id) {
-    const newProducts = products.filter((product) => product.id != id);
-    setProducts(newProducts);
-  }
-
-  const lastIndex = currentPage * productsPerpage;
-  const firstIndex = lastIndex - productsPerpage;
+    const myNewClosedProperties = myProperties.filter(
+      (property) => property.closed
+    );
+    setTotalQuantity(myNewClosedProperties.length);
+    setMyClosedProperties(myNewClosedProperties);
+  }, [myProperties]);
 
   return (
     <>
       <StyledSection>
         <Container size="xl">
           <>
-            <BoxOptions>
-              <div>
-                <StyledLinkInactive to={"/myproperties/active"}>
-                  ACTIVE
-                </StyledLinkInactive>
-                <hr className="inactive" />
-              </div>
-              <div>
-                <StyledLinkActive>CLOSED</StyledLinkActive>
-                <hr className="active" />
-              </div>
-            </BoxOptions>
-            <StyledH2>{totalProducts} Properties found</StyledH2>
+            <Anchor to={"/property/create"} type="primary">
+              Create Property
+            </Anchor>
+            <StyledNav>
+              <ul className="links">
+                <li>
+                  <StyledLinkInactive to={"/my_properties/active"}>
+                    ACTIVE
+                  </StyledLinkInactive>
+                  <hr className="link--inactive" />
+                </li>
+                <li>
+                  <StyledLinkActive>CLOSED</StyledLinkActive>
+                  <hr className="link--active" />
+                </li>
+              </ul>
+            </StyledNav>
+            <StyledH2>{totalQuantity} Properties found</StyledH2>
             <PropertiesContainer>
-              {products.slice(firstIndex, lastIndex).map((property) => {
-                const isOwner = true;
+              {myClosedProperties
+                .slice(firstIndex, lastIndex)
+                .map((property) => {
+                  const isOwner = true;
 
-                return (
-                  <PropertyCard
-                    key={`property-${property.id}`}
-                    property={property}
-                    isOwner={isOwner}
-                    handleDeleteProperty={handleDeleteProperty}
-                  />
-                );
-              })}
+                  return (
+                    <LandlordPropertyCard
+                      key={`property-${property.id}`}
+                      property={property}
+                      isOwner={isOwner}
+                    />
+                  );
+                })}
             </PropertiesContainer>
+            <Pagination
+              quantityPerPage={quantityPerPage}
+              totalQuantity={totalQuantity}
+              location={"/my_properties/closed"}
+            />
           </>
         </Container>
       </StyledSection>
-      <Pagination
-        productsPerpage={productsPerpage}
-        setCurrentPage={setCurrentPage}
-        totalProducts={totalProducts}
-      />
     </>
   );
 }

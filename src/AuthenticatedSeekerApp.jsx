@@ -23,15 +23,21 @@ function AuthenticatedSeekerApp() {
             <Route path="detail/:id" element={<PropertyDetailPage />} />
           </Route>
           <Route path="saved_properties">
-            <Route
-              index
-              element={<Navigate to="/saved_properties/favorites" />}
-            />
-            <Route path="favorites" element={<SavedFavoritePropertiesPage />} />
-            <Route
-              path="contacted"
-              element={<SavedContactedPropertiesPage />}
-            />
+            <Route index element={<Navigate to="favorites/page/1" />} />
+            <Route path="favorites">
+              <Route index element={<Navigate to="page/1" />} />
+              <Route
+                path="page/:page"
+                element={<SavedFavoritePropertiesPage />}
+              />
+            </Route>
+            <Route path="contacted">
+              <Route index element={<Navigate to="page/1" />} />
+              <Route
+                path="page/:page"
+                element={<SavedContactedPropertiesPage />}
+              />
+            </Route>
           </Route>
         </Route>
       </Routes>

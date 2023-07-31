@@ -1,14 +1,16 @@
-import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
 
-import { createUser, getUser } from "../services/user-service";
-import * as auth from "../services/auth-service";
 import { tokenKey } from "../config";
+import * as auth from "../services/auth-service";
+import { getProperties } from "../services/property-service";
+import { createUser, getUser } from "../services/user-service";
 
 const AuthContext = createContext();
 
 function AuthProvider(props) {
   const [user, setUser] = useState(null);
+  const [properties, setProperties] = useState([]);
   const [isLoginModalActive, setIsLoginModalActive] = useState(false);
 
   const navigate = useNavigate();
@@ -19,11 +21,13 @@ function AuthProvider(props) {
         setUser(user);
       })
       .catch(console.log);
-  }, []);
 
-  function handleModal() {
-    setIsLoginModalActive(!isLoginModalActive);
-  }
+    getProperties()
+      .then((properties) => {
+        setProperties(properties);
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   function login(credentials) {
     auth
@@ -31,7 +35,6 @@ function AuthProvider(props) {
       .then((user) => {
         setUser(user);
         handleModal();
-        navigate("/");
       })
       .catch(console.log);
   }
@@ -40,7 +43,7 @@ function AuthProvider(props) {
     createUser(userData)
       .then((user) => {
         setUser(user);
-        navigate("/");
+        navigate("/home");
       })
       .catch(console.log);
   }
@@ -51,9 +54,22 @@ function AuthProvider(props) {
       .then(() => {
         sessionStorage.removeItem(tokenKey);
         setUser(null);
-        navigate("/");
       })
       .catch(console.log);
+  }
+
+  function createProperty(property) {
+    const newProperties = [...properties, property];
+    setProperties(newProperties);
+  }
+
+  function deleteProperty(id) {
+    const newProperties = properties.filter((property) => property.id != id);
+    setProperties(newProperties);
+  }
+
+  function handleModal() {
+    setIsLoginModalActive(!isLoginModalActive);
   }
 
   const value = {
@@ -61,6 +77,9 @@ function AuthProvider(props) {
     login,
     signUp,
     logout,
+    properties,
+    createProperty,
+    deleteProperty,
     isLoginModalActive,
     handleModal,
   };

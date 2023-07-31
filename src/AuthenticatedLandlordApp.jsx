@@ -37,9 +37,15 @@ function AuthenticatedLandlordApp() {
             </Route>
           </Route>
           <Route path="my_properties">
-            <Route index element={<Navigate to="/my_properties/active" />} />
-            <Route path="active" element={<MyActivePropertiesPage />} />
-            <Route path="closed" element={<MyClosedPropertiesPage />} />
+            <Route index element={<Navigate to="active/page/1" />} />
+            <Route path="active">
+              <Route index element={<Navigate to="page/1" />} />
+              <Route path="page/:page" element={<MyActivePropertiesPage />} />
+            </Route>
+            <Route path="closed">
+              <Route index element={<Navigate to="page/1" />} />
+              <Route path="page/:page" element={<MyClosedPropertiesPage />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

@@ -35,13 +35,13 @@ export default function SavedFavoritePropertiesSection() {
               <ul className="links">
                 <li>
                   <StyledLinkActive>FAVORITE</StyledLinkActive>
-                  <hr className="link__active" />
+                  <hr className="link--active" />
                 </li>
                 <li>
                   <StyledLinkInactive to={"/saved_properties/contacted"}>
                     CONTACTED
                   </StyledLinkInactive>
-                  <hr className="link__inactive" />
+                  <hr className="link--inactive" />
                 </li>
               </ul>
             </StyledNav>

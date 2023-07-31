@@ -11,17 +11,17 @@ export const StyledNav = styled.nav`
   .links {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     ${typography.text.sm}
     font-weight: 500;
     margin-bottom: 1rem;
   }
 
-  .link__active {
+  .link--active {
     border: 0.125rem solid ${(props) => props.theme.colors.pink[500]};
   }
 
-  .link__inactive {
+  .link--inactive {
     border: 0.125rem solid ${(props) => props.theme.colors.text.light};
   }
 `;

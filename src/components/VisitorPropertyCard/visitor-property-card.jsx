@@ -26,7 +26,6 @@ function VisitorPropertyCard({ property }) {
     bathrooms,
     area,
     pets_allowed,
-    close,
     images,
   } = property;
 

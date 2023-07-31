@@ -31,14 +31,14 @@ export async function updateProperty(propertyData, propertyId) {
 export async function restoreProperty(propertyId) {
   return await apiFetch(`/properties/${propertyId}`, {
     method: "PATCH",
-    body: { close: false },
+    body: { closed: false },
   });
 }
 
 export async function closeProperty(propertyId) {
   return await apiFetch(`/properties/${propertyId}`, {
     method: "PATCH",
-    body: { close: true },
+    body: { closed: true },
   });
 }
 

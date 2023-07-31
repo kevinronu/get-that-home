@@ -3,18 +3,19 @@ import styled from "@emotion/styled";
 function sizeContainer(size) {
   switch (size) {
     case "sm":
-      return `max-width: 640px;`;
+      return `640px`;
     case "lg":
-      return `max-width: 1024px;`;
+      return `1024px`;
     case "xl":
-      return `max-width: 1280px;`;
+      return `1280px`;
     default:
-      return `max-width: 768px;`;
+      return `768px`;
   }
 }
 
 export const StyledDiv = styled.div`
   // padding: 0 16px;
   margin: auto;
-  ${(props) => sizeContainer(props.size)}
+  max-width: ${(props) => sizeContainer(props.size)};
+  padding: ${(props) => props.padding};
 `;

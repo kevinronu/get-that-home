@@ -19,11 +19,8 @@ function UnauthenticatedApp() {
         <Route path="login" element={<LoginModal />} />
         <Route path="sign_up" element={<SignUpPage />} />
         <Route path="properties">
-          <Route index element={<PropertiesPage />} />
-          <Route
-            path=":address/:houses/:apartment/:buying/:renting"
-            element={<PropertiesPage />}
-          />
+          <Route index element={<Navigate to="page/1" />} />
+          <Route path="page/:page" element={<PropertiesPage />} />
         </Route>
         <Route path="property">
           <Route path="detail/:id" element={<PropertyDetailPage />} />

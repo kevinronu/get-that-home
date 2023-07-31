@@ -2,10 +2,6 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { fonts, typography } from "../../styles";
 
-export const StyledSection = styled.section`
-  padding: 1rem;
-`;
-
 export const StyledNav = styled.nav`
   margin-top: 1rem;
 

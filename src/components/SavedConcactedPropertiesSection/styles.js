@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 
 import { fonts, typography } from "../../styles";
 
-export const StyledSection = styled.section`
-  padding: 1rem 0;
-`;
-
 export const StyledNav = styled.nav`
   .links {
     display: flex;

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 import {
   PropertiesContainer,
-  StyledSection,
   StyledNav,
   StyledH2,
   StyledLinkInactive,
@@ -13,6 +12,7 @@ import SeekerPropertyCard from "../SeekerPropertyCard";
 import { SeekerContext } from "../../context/seeker-context";
 import Container from "../../layout/Container/container";
 import Pagination from "../Pagination";
+import Section from "../../layout/Section";
 
 export default function SavedContactedPropertiesSection() {
   const { page } = useParams();
@@ -28,8 +28,8 @@ export default function SavedContactedPropertiesSection() {
 
   return (
     <>
-      <StyledSection>
-        <Container size="xl">
+      <Section size="xs">
+        <Container size="xl" padding={"1rem"}>
           <>
             <StyledNav>
               <ul className="links">
@@ -68,7 +68,7 @@ export default function SavedContactedPropertiesSection() {
             />
           </>
         </Container>
-      </StyledSection>
+      </Section>
     </>
   );
 }

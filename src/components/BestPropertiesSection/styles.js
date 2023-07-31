@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
 
-export const StyledSection = styled.section`
-  padding: 4rem 0;
-`;
-
 export const StyledP = styled.p`
   text-align: center;
   font-size: 0.875rem;

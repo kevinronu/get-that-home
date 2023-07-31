@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const StyledSection = styled.section`
-  padding: 4rem 0;
+  margin: 4rem 0;
   background-color: ${(props) => props.theme.colors.primary.lighter};
 `;
 

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 import {
   PropertiesContainer,
-  StyledSection,
   StyledNav,
   StyledLinkActive,
   StyledLinkInactive,
@@ -14,6 +13,7 @@ import { LandlordContext } from "../../context/landlord-context";
 import Pagination from "../Pagination";
 import LandlordPropertyCard from "../LandlordPropertyCard";
 import Anchor from "../Anchor";
+import Section from "../../layout/Section";
 
 export default function MyActivePropertiesSection() {
   const { page } = useParams();
@@ -34,8 +34,8 @@ export default function MyActivePropertiesSection() {
 
   return (
     <>
-      <StyledSection>
-        <Container size="xl">
+      <Section size="xs">
+        <Container size="xl" padding={"1rem"}>
           <>
             <Anchor to={"/property/create"} type="primary">
               Create Property
@@ -77,7 +77,7 @@ export default function MyActivePropertiesSection() {
             />
           </>
         </Container>
-      </StyledSection>
+      </Section>
     </>
   );
 }

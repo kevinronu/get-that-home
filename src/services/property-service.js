@@ -28,20 +28,20 @@ export async function updateProperty(propertyData, propertyId) {
   });
 }
 
-export async function deleteProperty(propertyId) {
-  return await apiFetch(`/properties/${propertyId}`, { method: "DELETE" });
-}
-
-export async function updateRestoreProperty(propertyId) {
+export async function restoreProperty(propertyId) {
   return await apiFetch(`/properties/${propertyId}`, {
     method: "PATCH",
     body: { close: false },
   });
 }
 
-export async function updateCloseProperty(propertyId) {
+export async function closeProperty(propertyId) {
   return await apiFetch(`/properties/${propertyId}`, {
     method: "PATCH",
     body: { close: true },
   });
+}
+
+export async function deleteProperty(propertyId) {
+  return await apiFetch(`/properties/${propertyId}`, { method: "DELETE" });
 }

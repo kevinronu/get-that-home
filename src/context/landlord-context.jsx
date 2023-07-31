@@ -29,6 +29,32 @@ function LandlordProvider(props) {
       .catch(console.log);
   }
 
+  function closeOwnProperty(id) {
+    propertyServices
+      .closeProperty(id)
+      .then((property) => {
+        let newMyProperties = myProperties.filter(
+          (myProperty) => myProperty.id != id
+        );
+        newMyProperties = [...newMyProperties, property];
+        setMyProperties(newMyProperties);
+      })
+      .catch(console.log);
+  }
+
+  function restoreOwnProperty(id) {
+    propertyServices
+      .restoreProperty(id)
+      .then((property) => {
+        let newMyProperties = myProperties.filter(
+          (myProperty) => myProperty.id != id
+        );
+        newMyProperties = [...newMyProperties, property];
+        setMyProperties(newMyProperties);
+      })
+      .catch(console.log);
+  }
+
   function deleteOwnProperty(id) {
     propertyServices
       .deleteProperty(id)
@@ -42,7 +68,13 @@ function LandlordProvider(props) {
       .catch(console.log);
   }
 
-  const value = { myProperties, createOwnProperty, deleteOwnProperty };
+  const value = {
+    myProperties,
+    createOwnProperty,
+    closeOwnProperty,
+    restoreOwnProperty,
+    deleteOwnProperty,
+  };
 
   return <LandlordContext.Provider value={value} {...props} />;
 }

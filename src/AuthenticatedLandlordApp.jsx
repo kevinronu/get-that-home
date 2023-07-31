@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import { LandlordProvider } from "./context/landlord-context";
 import HomePage from "./pages/HomePage";
 import PropertiesPage from "./pages/PropertiesPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
@@ -13,34 +14,36 @@ import MyClosedPropertiesPage from "./pages/MyClosedPropertiesPage";
 
 function AuthenticatedLandlordApp() {
   return (
-    <Routes>
-      <Route path="/">
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="home" element={<HomePage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="properties">
-          <Route index element={<PropertiesPage />} />
-        </Route>
-        <Route path="property">
-          <Route index element={<Navigate to="/property/create/rent" />} />
-          <Route path="create">
+    <LandlordProvider>
+      <Routes>
+        <Route path="/">
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="properties">
+            <Route index element={<PropertiesPage />} />
+          </Route>
+          <Route path="property">
             <Route index element={<Navigate to="/property/create/rent" />} />
-            <Route path="rent" element={<CreateRentalPropertyPage />} />
-            <Route path="sale" element={<CreateSalePropertyPage />} />
+            <Route path="create">
+              <Route index element={<Navigate to="/property/create/rent" />} />
+              <Route path="rent" element={<CreateRentalPropertyPage />} />
+              <Route path="sale" element={<CreateSalePropertyPage />} />
+            </Route>
+            <Route path="detail/:id" element={<PropertyDetailPage />} />
+            <Route path="edit">
+              <Route path="rent/:id" element={<EditRentPropertyPage />} />
+              <Route path="sale/:id" element={<EditSalePropertyPage />} />
+            </Route>
           </Route>
-          <Route path="detail/:id" element={<PropertyDetailPage />} />
-          <Route path="edit">
-            <Route path="rent/:id" element={<EditRentPropertyPage />} />
-            <Route path="sale/:id" element={<EditSalePropertyPage />} />
+          <Route path="my_properties">
+            <Route index element={<Navigate to="/my_properties/active" />} />
+            <Route path="active" element={<MyActivePropertiesPage />} />
+            <Route path="closed" element={<MyClosedPropertiesPage />} />
           </Route>
         </Route>
-        <Route path="my_properties">
-          <Route index element={<Navigate to="/my_properties/active" />} />
-          <Route path="active" element={<MyActivePropertiesPage />} />
-          <Route path="closed" element={<MyClosedPropertiesPage />} />
-        </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </LandlordProvider>
   );
 }
 

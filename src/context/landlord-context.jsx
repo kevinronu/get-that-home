@@ -7,7 +7,7 @@ const LandlordContext = createContext();
 
 function LandlordProvider(props) {
   const [myProperties, setMyProperties] = useState([]);
-  const { createProperty, deleteProperty, closeProperty, restoreProperty } =
+  const { createProperty, deleteProperty, updateProperty } =
     useContext(AuthContext);
 
   useEffect(() => {
@@ -25,35 +25,43 @@ function LandlordProvider(props) {
       .then((property) => {
         const newMyProperties = [...myProperties, property];
         setMyProperties(newMyProperties);
-        createProperty(property);
+        updateProperty(property);
       })
       .catch(console.log);
   }
 
   function closeOwnProperty(id) {
+    const indexToUpdate = myProperties.findIndex(
+      (myProperty) => myProperty.id === id
+    );
     propertyServices
       .closeProperty(id)
       .then((property) => {
-        let newMyProperties = myProperties.filter(
-          (myProperty) => myProperty.id != id
-        );
-        newMyProperties = [...newMyProperties, property];
+        const newMyProperties = [
+          ...myProperties.slice(0, indexToUpdate),
+          property,
+          ...myProperties.slice(indexToUpdate + 1),
+        ];
         setMyProperties(newMyProperties);
-        closeProperty(property);
+        updateProperty(property);
       })
       .catch(console.log);
   }
 
   function restoreOwnProperty(id) {
+    const indexToUpdate = myProperties.findIndex(
+      (myProperty) => myProperty.id === id
+    );
     propertyServices
       .restoreProperty(id)
       .then((property) => {
-        let newMyProperties = myProperties.filter(
-          (myProperty) => myProperty.id != id
-        );
-        newMyProperties = [...newMyProperties, property];
+        const newMyProperties = [
+          ...myProperties.slice(0, indexToUpdate),
+          property,
+          ...myProperties.slice(indexToUpdate + 1),
+        ];
         setMyProperties(newMyProperties);
-        restoreProperty(property);
+        updateProperty(property);
       })
       .catch(console.log);
   }

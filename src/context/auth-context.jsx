@@ -64,15 +64,13 @@ function AuthProvider(props) {
     setProperties(newProperties);
   }
 
-  function closeProperty(property) {
-    let newProperties = properties.filter((e) => e.id != property.id);
-    newProperties = [...newProperties, property];
-    setProperties(newProperties);
-  }
-
-  function restoreProperty(property) {
-    let newProperties = properties.filter((e) => e.id != property.id);
-    newProperties = [...newProperties, property];
+  function updateProperty(property) {
+    const indexToUpdate = properties.findIndex((e) => e.id === property.id);
+    const newProperties = [
+      ...properties.slice(0, indexToUpdate),
+      property,
+      ...properties.slice(indexToUpdate + 1),
+    ];
     setProperties(newProperties);
   }
 
@@ -92,8 +90,7 @@ function AuthProvider(props) {
     logout,
     properties,
     createProperty,
-    closeProperty,
-    restoreProperty,
+    updateProperty,
     deleteProperty,
     isLoginModalActive,
     handleModal,

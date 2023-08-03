@@ -11,6 +11,7 @@ export const StyledContainer = styled.div`
   }
 
   .container {
+    z-index: 1;
     width: 15.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem;

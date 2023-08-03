@@ -78,7 +78,10 @@ export default function FilterPrice({ handleFilters }) {
             <Button
               type="primary"
               className="form__button"
-              onClick={() => handleFilters(formData)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleFilters(formData);
+              }}
             >
               DONE
             </Button>

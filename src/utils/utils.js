@@ -16,13 +16,13 @@ export function filterProperties(
     .filter((property) => {
       if (property.operation_type === "rent") {
         return (
-          property.monthly_rent > filters.minPrice * 1000 &&
-          property.monthly_rent < filters.maxPrice * 1000
+          property.monthly_rent >= filters.minPrice * 1000 &&
+          property.monthly_rent <= filters.maxPrice * 1000
         );
       } else if (property.operation_type === "sale") {
         return (
-          property.price * 1000 > filters.minPrice &&
-          property.price < filters.maxPrice * 1000
+          property.price * 1000 >= filters.minPrice &&
+          property.price <= filters.maxPrice * 1000
         );
       }
     })

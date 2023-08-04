@@ -54,7 +54,7 @@ export default function FilterPropertyType({ handleFilters }) {
         <div className="container">
           <form className="form">
             <div>
-              <p className="form__label">PROPERTY TYPE</p>
+              <p className="form__title">PROPERTY TYPE</p>
               <div className="form__inputs">
                 <label className="form__checkbox">
                   <input
@@ -63,7 +63,7 @@ export default function FilterPropertyType({ handleFilters }) {
                     checked={propertyType.includes("house")}
                     onChange={handleChange}
                   />
-                  <p>House</p>
+                  <p className="form__label">House</p>
                 </label>
                 <label className="form__checkbox">
                   <input
@@ -72,7 +72,7 @@ export default function FilterPropertyType({ handleFilters }) {
                     checked={propertyType.includes("apartment")}
                     onChange={handleChange}
                   />
-                  <p>Apartment</p>
+                  <p className="form__label">Apartment</p>
                 </label>
               </div>
             </div>

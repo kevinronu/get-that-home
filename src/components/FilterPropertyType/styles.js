@@ -30,7 +30,7 @@ export const StyledContainer = styled.div`
     flex-wrap: wrap;
   }
 
-  .form__label {
+  .form__title {
     font-family: ${fonts.secondary};
     font-size: 0.625rem;
     letter-spacing: 0.09375rem;
@@ -47,6 +47,13 @@ export const StyledContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.25rem;
+  }
+
+  .form__label {
+    font-family: ${fonts.secondary};
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.01563rem;
   }
 
   .form__button {

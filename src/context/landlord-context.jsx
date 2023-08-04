@@ -25,7 +25,7 @@ function LandlordProvider(props) {
       .then((property) => {
         const newMyProperties = [...myProperties, property];
         setMyProperties(newMyProperties);
-        updateProperty(property);
+        createProperty(property);
       })
       .catch(console.log);
   }

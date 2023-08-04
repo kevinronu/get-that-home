@@ -14,6 +14,10 @@ export function filterProperties(
 ) {
   return properties
     .filter((property) => {
+      const regex = new RegExp(filters.address, "i");
+      return filters.address === "" || property.address.search(regex) >= 0;
+    })
+    .filter((property) => {
       if (property.operation_type === "rent") {
         return (
           property.monthly_rent >= filters.minPrice * 1000 &&

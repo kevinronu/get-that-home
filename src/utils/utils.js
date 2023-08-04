@@ -7,9 +7,10 @@ export function filterProperties(
     propertyType: [],
     minBeds: 0,
     minBaths: 0,
-    petsAllowed: "all",
+    petsAllowed: false,
     minArea: 0,
     maxArea: Infinity,
+    operationType: "all",
   }
 ) {
   return properties
@@ -46,5 +47,10 @@ export function filterProperties(
           property.pets_allowed >= filters.petsAllowed) &&
         property.area >= filters.minArea &&
         property.area <= filters.maxArea
+    )
+    .filter(
+      (property) =>
+        filters.operationType === "all" ||
+        filters.operationType === property.operation_type
     );
 }

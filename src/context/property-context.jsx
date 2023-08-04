@@ -20,6 +20,7 @@ function PropertyProvider(props) {
     petsAllowed: null,
     minArea: 0,
     maxArea: Infinity,
+    operationType: "all",
   });
 
   useEffect(() => {

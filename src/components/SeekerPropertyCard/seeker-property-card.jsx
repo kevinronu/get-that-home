@@ -36,10 +36,10 @@ function SeekerPropertyCard({ property, isFavorite }) {
         <p>Apartment</p>
       </div>
     ),
-    home: (
+    house: (
       <div className="info-title__type">
         <BsHouseDoor size={"1.5rem"} />
-        <p>Home</p>
+        <p>House</p>
       </div>
     ),
   };

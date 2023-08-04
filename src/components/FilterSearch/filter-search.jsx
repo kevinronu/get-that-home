@@ -24,7 +24,7 @@ export default function FilterSearch() {
     const timerId = setTimeout(setFilter, 1000);
 
     return () => clearTimeout(timerId);
-  }, [query, handleFilters, formData.address]);
+  }, [query, formData.address]);
 
   useEffect(() => {
     setDatalist(filteredProperties.map((property) => property.address));

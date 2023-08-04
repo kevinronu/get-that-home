@@ -35,5 +35,12 @@ export function filterProperties(
       (property) =>
         property.bedrooms >= filters.minBeds &&
         property.bathrooms >= filters.minBaths
+    )
+    .filter(
+      (property) =>
+        (!filters.petsAllowed ||
+          property.pets_allowed >= filters.petsAllowed) &&
+        property.area >= filters.minArea &&
+        property.area <= filters.maxArea
     );
 }

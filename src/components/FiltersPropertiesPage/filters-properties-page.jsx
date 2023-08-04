@@ -4,6 +4,7 @@ import FilterPetArea from "../FilterPetArea";
 import FilterBedBath from "../FilterBedBath";
 import FilterSearch from "../FilterSearch";
 import FilterPrice from "../FilterPrice";
+import FilterOperationType from "../FilterOperationType";
 
 export default function FilterPropertiesPage() {
   return (
@@ -15,6 +16,7 @@ export default function FilterPropertiesPage() {
         <FilterBedBath />
         <FilterPetArea />
       </div>
+      <FilterOperationType />
     </FilterContainer>
   );
 }

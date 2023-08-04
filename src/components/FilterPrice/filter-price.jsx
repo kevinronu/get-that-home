@@ -80,6 +80,7 @@ export default function FilterPrice({ handleFilters }) {
               className="form__button"
               onClick={(e) => {
                 e.preventDefault();
+                handleToggleFilter();
                 handleFilters(formData);
               }}
             >

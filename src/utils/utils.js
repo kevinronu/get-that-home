@@ -30,5 +30,10 @@ export function filterProperties(
       (property) =>
         filters.propertyType.length === 0 ||
         filters.propertyType.includes(property.property_type)
+    )
+    .filter(
+      (property) =>
+        property.bedrooms >= filters.minBeds &&
+        property.bathrooms >= filters.minBaths
     );
 }

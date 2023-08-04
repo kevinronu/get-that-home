@@ -59,7 +59,7 @@ export default function FilterPrice({ handleFilters }) {
               <p className="form__label">PRICE RANGE</p>
               <div className="form__inputs">
                 <InputWithIcon
-                  icon={<BiSolidDollarCircle size={"2rem"} />}
+                  icon={<BiSolidDollarCircle size={"1.25rem"} />}
                   name="minPrice"
                   type="number"
                   placeholder="min"
@@ -68,7 +68,7 @@ export default function FilterPrice({ handleFilters }) {
                 />
                 <BsDashLg size={"0.6875rem"} />
                 <InputWithIcon
-                  icon={<BiSolidDollarCircle size={"2rem"} />}
+                  icon={<BiSolidDollarCircle size={"1.25rem"} />}
                   name="maxPrice"
                   type="number"
                   placeholder="max"

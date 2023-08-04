@@ -4,6 +4,8 @@ import { fonts } from "../../styles";
 export const StyledInput = styled("input")`
   border: none;
   padding: 0.25rem 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem; /* 142.857% */
   width: ${({ isFullWidth }) => (isFullWidth ? "100%" : "3.625rem")};
   accent-color: ${(props) => props.theme.colors.pink[400]};
   ::placeholder {
@@ -18,9 +20,10 @@ export const StyledInput = styled("input")`
 
 export const StyledLabel = styled.label`
   color: ${(props) => props.theme.colors.text.light};
-  font-size: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem; /* 142.857% */
   font-family: ${fonts.secondary};
-  letter-spacing: 0.09375rem;
+  letter-spacing: 0.01563rem;
   //word-wrap: break-word;
 `;
 

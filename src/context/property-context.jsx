@@ -43,7 +43,7 @@ function PropertyProvider(props) {
 
   function clearFilters() {
     setFilters({
-      address: "",
+      ...filters,
       minPrice: 0,
       maxPrice: Infinity,
       propertyType: [],

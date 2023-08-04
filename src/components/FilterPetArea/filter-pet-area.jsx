@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 import { PropertyContext } from "../../context/property-context";
@@ -10,12 +10,21 @@ import Button from "../Button";
 
 export default function FilterPetArea() {
   const [showFilter, setShowFilter] = useState(false);
-  const { handleFilters } = useContext(PropertyContext);
+  const { filters, handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     petsAllowed: false,
     minArea: 0,
     maxArea: Infinity,
   });
+
+  useEffect(() => {
+    const { petsAllowed, minArea, maxArea } = filters;
+    setFormData({
+      petsAllowed,
+      minArea,
+      maxArea,
+    });
+  }, [filters]);
 
   const { petsAllowed, minArea, maxArea } = formData;
 

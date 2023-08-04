@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { BsDashLg } from "react-icons/bs";
 
@@ -9,13 +9,21 @@ import { StyledContainer } from "./styles";
 import { PropertyContext } from "../../context/property-context";
 
 export default function FilterPrice() {
-  const { handleFilters } = useContext(PropertyContext);
+  const { filters, handleFilters } = useContext(PropertyContext);
   const [showFilter, setShowFilter] = useState(false);
 
   const [formData, setFormData] = useState({
     minPrice: 0,
     maxPrice: Infinity,
   });
+
+  useEffect(() => {
+    const { minPrice, maxPrice } = filters;
+    setFormData({
+      minPrice,
+      maxPrice,
+    });
+  }, [filters]);
 
   const { minPrice, maxPrice } = formData;
 

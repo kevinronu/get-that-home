@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Button from "../Button";
 import { StyledContainer } from "./styles";
@@ -7,11 +7,19 @@ import { PropertyContext } from "../../context/property-context";
 
 export default function FilterBedBath() {
   const [showFilter, setShowFilter] = useState(false);
-  const { handleFilters } = useContext(PropertyContext);
+  const { filters, handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     minBeds: 0,
     minBaths: 0,
   });
+
+  useEffect(() => {
+    const { minBeds, minBaths } = filters;
+    setFormData({
+      minBeds,
+      minBaths,
+    });
+  }, [filters]);
 
   const { minBeds, minBaths } = formData;
 
@@ -36,6 +44,8 @@ export default function FilterBedBath() {
       return `${minBeds}+ BD, ${minBaths}+ BA`;
     }
   }
+
+  console.log("render");
 
   return (
     <StyledContainer>

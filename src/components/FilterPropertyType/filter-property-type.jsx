@@ -1,17 +1,24 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Button from "../Button";
 import { StyledContainer } from "./styles";
 import { PropertyContext } from "../../context/property-context";
 
 export default function FilterPropertyType() {
-  const { handleFilters } = useContext(PropertyContext);
+  const { filters, handleFilters } = useContext(PropertyContext);
   const [showFilter, setShowFilter] = useState(false);
 
   const [formData, setFormData] = useState({
     propertyType: [],
   });
+
+  useEffect(() => {
+    const { propertyType } = filters;
+    setFormData({
+      propertyType,
+    });
+  }, [filters]);
 
   const { propertyType } = formData;
 

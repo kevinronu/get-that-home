@@ -6,9 +6,11 @@ import MeetHomeSection from "../../components/MeetHomeSection";
 import FooterHome from "../../components/FooterHome";
 import Header from "../../components/Header";
 import { AuthContext } from "../../context/auth-context";
+import { PropertyContext } from "../../context/property-context";
 
 export default function HomePage() {
-  const { user, properties } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { properties } = useContext(PropertyContext);
 
   return (
     <>

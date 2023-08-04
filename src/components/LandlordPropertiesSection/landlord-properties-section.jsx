@@ -2,16 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { PropertiesContainer, StyledH2 } from "./styles";
-import { AuthContext } from "../../context/auth-context";
 import Container from "../../layout/Container";
 import Section from "../../layout/Section";
 import LandlordPropertyCard from "../LandlordPropertyCard";
 import Pagination from "../Pagination";
 import { LandlordContext } from "../../context/landlord-context";
+import { PropertyContext } from "../../context/property-context";
 
 export default function LandlordPropertiesSection() {
   const { page } = useParams();
-  const { properties } = useContext(AuthContext);
+  const { properties } = useContext(PropertyContext);
   const { myProperties } = useContext(LandlordContext);
   const [quantityPerPage] = useState(12);
   const [totalQuantity, setTotalQuantity] = useState(0);

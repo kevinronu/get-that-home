@@ -8,9 +8,11 @@ import VisitorPropertyCard from "../VisitorPropertyCard";
 import LandlordPropertyCard from "../LandlordPropertyCard";
 import SeekerPropertyCard from "../SeekerPropertyCard";
 import Section from "../../layout/Section";
+import { PropertyContext } from "../../context/property-context";
 
 export default function BestPropertiesSection() {
-  const { user, properties } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { properties } = useContext(PropertyContext);
 
   return (
     <Section>

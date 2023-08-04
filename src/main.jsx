@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { global, reset } from "./styles/global.js";
 import { AuthProvider } from "./context/auth-context.jsx";
+import { PropertyProvider } from "./context/property-context.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Global styles={global} />
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <PropertyProvider>
+          <App />
+        </PropertyProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

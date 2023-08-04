@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { AuthContext } from "./auth-context";
 import * as propertyServices from "../services/property-service";
+import { PropertyContext } from "./property-context";
 
 const LandlordContext = createContext();
 
 function LandlordProvider(props) {
   const [myProperties, setMyProperties] = useState([]);
   const { createProperty, deleteProperty, updateProperty } =
-    useContext(AuthContext);
+    useContext(PropertyContext);
 
   useEffect(() => {
     propertyServices

@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 
+import { PropertyContext } from "../../context/property-context";
 import InputWithIcon from "../InputWithIcon";
-import { BsDashLg } from "react-icons/bs";
 import { StyledContainer } from "./styles";
+import { BsDashLg } from "react-icons/bs";
 import Button from "../Button";
 
-export default function FilterPetArea({ handleFilters }) {
+export default function FilterPetArea() {
   const [showFilter, setShowFilter] = useState(false);
-
+  const { handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     petsAllowed: false,
     minArea: 0,

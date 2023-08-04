@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BiSolidDollarCircle } from "react-icons/bi";
 import { BsDashLg } from "react-icons/bs";
 
 import Button from "../Button";
 import InputWithIcon from "../InputWithIcon";
 import { StyledContainer } from "./styles";
+import { PropertyContext } from "../../context/property-context";
 
-export default function FilterPrice({ handleFilters }) {
+export default function FilterPrice() {
+  const { handleFilters } = useContext(PropertyContext);
   const [showFilter, setShowFilter] = useState(false);
 
   const [formData, setFormData] = useState({

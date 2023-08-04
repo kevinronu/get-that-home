@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Button from "../Button";
 import { StyledContainer } from "./styles";
+import { PropertyContext } from "../../context/property-context";
 
-export default function FilterBedBath({ handleFilters }) {
+export default function FilterBedBath() {
   const [showFilter, setShowFilter] = useState(false);
-
+  const { handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     minBeds: 0,
     minBaths: 0,

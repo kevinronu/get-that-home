@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-
+import { useContext, useEffect, useState } from "react";
 import { TfiSearch } from "react-icons/tfi";
-import { StyledContainer } from "./styles";
 
-export default function FilterSearch({ datalist = [], handleFilters }) {
+import { StyledContainer } from "./styles";
+import { PropertyContext } from "../../context/property-context";
+
+export default function FilterSearch({ datalist = [] }) {
+  const { handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     address: "",
   });

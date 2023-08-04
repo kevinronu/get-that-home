@@ -19,17 +19,17 @@ function typeStyles(type, theme) {
       `;
     case "secondary":
       return `
-        background-color: transparent; 
-        border: 0.0625rem solid ${theme.colors.pink[400]};
+        background-color: ${theme.colors.background.lighter};
+        border: 0.0625rem solid ${theme.colors.pink[500]};
         color: ${theme.colors.text.standard};
         :hover {
-          background-color: ${theme.colors.background.dark};
+          background-color: ${theme.colors.background.light};
+        }
+        :active {
+          background-color: ${theme.colors.background.standard};
         }
         :focus {
           outline: 0.1875rem solid ${theme.colors.info};
-        }
-        :active {
-          background-color: ${theme.colors.background.darker};
         }
       `;
     case "tertiary":
@@ -93,10 +93,8 @@ export const StyledButton = styled.button`
   white-space: nowrap;
   gap: 0.5rem;
   font-weight: 700;
-  border-radius: ${({ rounded }) => (rounded ? "50%" : "1.875rem")};
-  border-radius: ${({ square }) => (square ? "0.5rem" : "")};
+  border-radius: ${({ rounded }) => (rounded ? "50%" : "0.5rem")};
   border: none;
-
   cursor: pointer;
   :disabled {
     opacity: 60%;

@@ -41,9 +41,19 @@ function PropertyProvider(props) {
     navigate("/properties/page/1");
   }
 
-  function handleFiltersWithoutRefresh(newFilters) {
-    const newAllFilters = { ...filters, ...newFilters };
-    setFilters(newAllFilters);
+  function clearFilters() {
+    setFilters({
+      address: "",
+      minPrice: 0,
+      maxPrice: Infinity,
+      propertyType: [],
+      minBeds: 0,
+      minBaths: 0,
+      petsAllowed: null,
+      minArea: 0,
+      maxArea: Infinity,
+      operationType: "all",
+    });
   }
 
   function createProperty(property) {
@@ -68,12 +78,13 @@ function PropertyProvider(props) {
 
   const value = {
     properties,
+    filters,
     filteredProperties,
+    clearFilters,
     createProperty,
     updateProperty,
     deleteProperty,
     handleFilters,
-    handleFiltersWithoutRefresh,
   };
 
   return <PropertyContext.Provider value={value} {...props} />;

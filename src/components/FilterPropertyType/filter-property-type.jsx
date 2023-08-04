@@ -45,11 +45,13 @@ export default function FilterPropertyType({ handleFilters }) {
 
   return (
     <StyledContainer>
-      <div className="filter-price-button">
-        <Button type="primary" onClick={handleToggleFilter}>
-          {calcText()}
-        </Button>
-      </div>
+      <Button
+        type="primary"
+        onClick={handleToggleFilter}
+        className="filter-button"
+      >
+        {calcText()}
+      </Button>
       {showFilter && (
         <div className="container">
           <form className="form">

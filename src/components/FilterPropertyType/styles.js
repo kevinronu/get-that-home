@@ -4,10 +4,8 @@ import { fonts } from "../../styles";
 export const StyledContainer = styled.div`
   position: relative;
 
-  .filter-price-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .filter-button {
+    margin-bottom: 0.25rem;
   }
 
   .container {

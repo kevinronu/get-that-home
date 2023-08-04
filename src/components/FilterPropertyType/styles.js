@@ -46,6 +46,8 @@ export const StyledContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    cursor: pointer;
+    accent-color: ${(props) => props.theme.colors.pink[500]};
   }
 
   .form__label {

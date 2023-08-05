@@ -18,8 +18,6 @@ export default function PropertyWindowSeeker({ id }) {
     (favorite) => favorite.property_id === Number(id)
   );
 
-  // console.log(favorites);
-
   return (
     <StyledDiv>
       {contact ? (

@@ -8,10 +8,11 @@ import LandlordPropertyCard from "../LandlordPropertyCard";
 import Pagination from "../Pagination";
 import { LandlordContext } from "../../context/landlord-context";
 import { PropertyContext } from "../../context/property-context";
+import FilterPropertiesPage from "../FiltersPropertiesPage";
 
 export default function LandlordPropertiesSection() {
   const { page } = useParams();
-  const { properties } = useContext(PropertyContext);
+  const { filteredProperties } = useContext(PropertyContext);
   const { myProperties } = useContext(LandlordContext);
   const [quantityPerPage] = useState(12);
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -19,17 +20,17 @@ export default function LandlordPropertiesSection() {
   const firstIndex = lastIndex - quantityPerPage;
 
   useEffect(() => {
-    setTotalQuantity(properties.length);
-  }, [properties]);
+    setTotalQuantity(filteredProperties.length);
+  }, [filteredProperties]);
 
   return (
     <Section size="xs">
       <Container size="xl" padding={"1rem"}>
         <>
-          <div>Filters</div>
+          <FilterPropertiesPage />
           <StyledH2>{totalQuantity} Properties found</StyledH2>
           <PropertiesContainer>
-            {properties.slice(firstIndex, lastIndex).map((property) => {
+            {filteredProperties.slice(firstIndex, lastIndex).map((property) => {
               const isOwner = myProperties.some(
                 (myProperty) => myProperty.id === property.id
               );

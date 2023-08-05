@@ -4,8 +4,8 @@ export async function getMyFavorites() {
   return await apiFetch("/favorites");
 }
 
-export async function createFavorite(favoriteData) {
-  return await apiFetch("/favorites", { body: favoriteData });
+export async function createFavorite(id) {
+  return await apiFetch("/favorites", { body: { property_id: id } });
 }
 
 export async function deleteFavorite(id) {

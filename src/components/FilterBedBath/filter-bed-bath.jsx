@@ -45,8 +45,6 @@ export default function FilterBedBath() {
     }
   }
 
-  console.log("render");
-
   return (
     <StyledContainer>
       <Button

@@ -6,12 +6,15 @@ import { StyledContainer } from "./styles";
 import { PropertyContext } from "../../context/property-context";
 
 export default function FilterSearch() {
-  const { filteredProperties, handleFilters } = useContext(PropertyContext);
+  const { filters, filteredProperties, handleFilters } =
+    useContext(PropertyContext);
   const [formData, setFormData] = useState({
     address: "",
   });
   const [datalist, setDatalist] = useState([]);
   const [query, setQuery] = useState("");
+
+  useEffect(() => setQuery(filters.address), [filters.address]);
 
   useEffect(() => {
     if (query === "" && formData.address === "") return;

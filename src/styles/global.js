@@ -119,8 +119,7 @@ export const global = css`
     font-size: 100%;
     line-height: 1.5;
     font-family: ${fonts.primary};
-
-    text-wrap: balance;
+    // text-wrap: balance;
     hyphens: auto;
     font-smooth: always;
     -webkit-font-smoothing: antialiased;

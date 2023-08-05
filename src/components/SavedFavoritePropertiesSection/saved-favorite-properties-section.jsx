@@ -47,11 +47,11 @@ export default function SavedFavoritePropertiesSection() {
             </StyledNav>
             <StyledH2>{totalQuantity} Properties found</StyledH2>
             <PropertiesContainer>
-              {favorites.slice(firstIndex, lastIndex).map((property) => {
+              {favorites.slice(firstIndex, lastIndex).map((favorite) => {
                 return (
                   <SeekerPropertyCard
-                    key={`property-${property.id}`}
-                    property={property}
+                    key={`favorite-property-${favorite.property.id}`}
+                    property={favorite.property}
                     isFavorite={true}
                   />
                 );

@@ -47,15 +47,15 @@ export default function SavedContactedPropertiesSection() {
             </StyledNav>
             <StyledH2>{totalQuantity} Properties found</StyledH2>
             <PropertiesContainer>
-              {contacts.slice(firstIndex, lastIndex).map((property) => {
+              {contacts.slice(firstIndex, lastIndex).map((contact) => {
                 const isFavorite = favorites.some(
-                  (favorite) => favorite.id === property.id
+                  (favorite) => favorite.property.id === contact.property.id
                 );
 
                 return (
                   <SeekerPropertyCard
-                    key={`property-${property.id}`}
-                    property={property}
+                    key={`contact-property-${contact.property.id}`}
+                    property={contact.property}
                     isFavorite={isFavorite}
                   />
                 );

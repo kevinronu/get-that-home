@@ -32,7 +32,7 @@ export default function SeekerPropertiesSection() {
           <PropertiesContainer>
             {filteredProperties.slice(firstIndex, lastIndex).map((property) => {
               const isFavorite = favorites.some(
-                (favorite) => favorite.id === property.id
+                (favorite) => favorite.property.id === property.id
               );
 
               return (

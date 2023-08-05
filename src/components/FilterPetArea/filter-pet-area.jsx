@@ -61,7 +61,7 @@ export default function FilterPetArea() {
               <input
                 name="petsAllowed"
                 type="checkbox"
-                checked={petsAllowed}
+                checked={petsAllowed === true}
                 onChange={handleChange}
               />
               <p className="form__label">Pets Allowed</p>

@@ -52,7 +52,7 @@ export const StyledNav = styled.nav`
     transform-origin: right;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 830px) {
     display: flex;
     justify-content: space-between;
     align-items: center;

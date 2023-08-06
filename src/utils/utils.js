@@ -14,6 +14,7 @@ export function filterProperties(
   }
 ) {
   return properties
+    .filter((property) => !property.closed)
     .filter((property) => {
       const regex = new RegExp(filters.address, "i");
       return filters.address === "" || property.address.search(regex) >= 0;

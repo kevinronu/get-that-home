@@ -4,10 +4,6 @@ import { fonts } from "../../styles";
 export const StyledContainer = styled.div`
   position: relative;
 
-  .filter-button {
-    margin-bottom: 0.25rem;
-  }
-
   .container {
     z-index: 1;
     width: 13rem;
@@ -32,7 +28,6 @@ export const StyledContainer = styled.div`
     font-family: ${fonts.secondary};
     font-size: 0.625rem;
     letter-spacing: 0.09375rem;
-    margin-bottom: 0.25rem;
   }
 
   .form__inputs {

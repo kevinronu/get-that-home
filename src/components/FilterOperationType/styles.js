@@ -4,7 +4,7 @@ import { fonts } from "../../styles";
 export const StyledSelect = styled.select`
   font-family: ${fonts.secondary};
   padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.pink[500]};
+  border: 0.0625rem solid ${(props) => props.theme.colors.pink[500]};
   border-radius: 0.5rem;
   background-color: ${(props) => props.theme.colors.background.lighter};
 

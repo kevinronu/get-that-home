@@ -6,7 +6,6 @@ export const StyledContainer = styled.div`
 
   .filter-button {
     width: 8rem;
-    margin-bottom: 0.25rem;
   }
 
   .container {

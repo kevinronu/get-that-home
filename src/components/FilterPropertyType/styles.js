@@ -5,7 +5,6 @@ export const StyledContainer = styled.div`
   position: relative;
 
   .filter-button {
-    margin-bottom: 0.25rem;
     width: 12.25rem;
   }
 

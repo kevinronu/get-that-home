@@ -6,6 +6,7 @@ function typeStyles(type, theme) {
     case "primary":
       return `
         background-color: ${theme.colors.pink[500]};
+        border: 0.0625rem solid ${theme.colors.pink[500]};
         color: ${theme.colors.white.saturated};
         :hover {
           background-color: ${theme.colors.pink[600]};
@@ -73,7 +74,7 @@ function sizeStyles(size, rounded) {
       `;
     case "lg":
       return `
-          padding: 0.75rem ${rounded ? "" : "1.5rem"};
+          padding: 0.5rem ${rounded ? "" : "1rem"};
           ${typography.text.md}
         `;
     default:

@@ -54,3 +54,14 @@ export function filterProperties(
         filters.operationType === property.operation_type
     );
 }
+
+export function getCoordinates(address) {
+  const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+
+  return fetch(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
+  )
+    .then((response) => response.json())
+    .then((data) => data.results[0].geometry.location)
+    .catch(console.log);
+}

@@ -1,3 +1,4 @@
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MdOutlinePets } from "react-icons/md";
@@ -9,15 +10,29 @@ import PropertyWindowLandlord from "../PropertyWindowLandlord";
 import PropertyWindowSeeker from "../PropertyWindowSeeker";
 import { PropertyContext } from "../../context/property-context";
 import { AuthContext } from "../../context/auth-context";
-import Slideshow from "../Slideshow";
+import { getCoordinates } from "../../utils/utils";
 import Container from "../../layout/Container";
 import { StyledSection } from "./styles";
+import Slideshow from "../Slideshow";
+
+const containerStyle = {
+  "min-width": "343px",
+  "aspect-ratio": "1/1",
+  "max-width": "512px",
+  margin: "auto",
+};
 
 export default function PropertyDetailSection() {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const { properties } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
+  const [coordinates, setCoordinates] = useState();
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+  });
 
   useEffect(() => {
     if (!id || properties.length === 0) return;
@@ -25,6 +40,13 @@ export default function PropertyDetailSection() {
     const foundProperty = properties.find(
       (property) => property.id === Number(id)
     );
+    getCoordinates(
+      `${foundProperty.address}, ${foundProperty.city}, ${foundProperty.country}`
+    ).then((coords) => {
+      if (coords) {
+        setCoordinates(coords);
+      }
+    });
     setProperty(foundProperty);
   }, [id, properties]);
 
@@ -84,6 +106,15 @@ export default function PropertyDetailSection() {
               <p className="about-location__description">
                 {property.address}, {property.city}, {property.country}
               </p>
+              {coordinates && (
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={coordinates}
+                  zoom={15}
+                >
+                  <Marker position={coordinates} />
+                </GoogleMap>
+              )}
             </div>
           </div>
           {!user ? (

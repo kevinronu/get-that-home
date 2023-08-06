@@ -18,7 +18,8 @@ function UnauthenticatedApp() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="home" element={<HomePage />} />
         <Route path="login" element={<LoginModal />} />
-        <Route path="sign_up" element={<SignUpPage />}>
+        <Route path="sign_up">
+          <Route index element={<SignUpPage />} />
           <Route path=":role" element={<SignUpFormPage />} />
         </Route>
         <Route path="properties">

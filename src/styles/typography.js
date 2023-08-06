@@ -17,7 +17,7 @@ export const typography = {
     `,
     md: `
     font-size: 1em;
-    line-height: 1.5rem;
+    line-height: 1.35rem;
     `,
     lg: `
     font-size: 1.125em;

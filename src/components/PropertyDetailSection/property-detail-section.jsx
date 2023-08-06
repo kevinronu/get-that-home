@@ -106,15 +106,17 @@ export default function PropertyDetailSection() {
               <p className="about-location__description">
                 {property.address}, {property.city}, {property.country}
               </p>
-              {coordinates && (
-                <GoogleMap
-                  mapContainerStyle={containerStyle}
-                  center={coordinates}
-                  zoom={15}
-                >
-                  <Marker position={coordinates} />
-                </GoogleMap>
-              )}
+              {isLoaded
+                ? coordinates && (
+                    <GoogleMap
+                      mapContainerStyle={containerStyle}
+                      center={coordinates}
+                      zoom={15}
+                    >
+                      <Marker position={coordinates} />
+                    </GoogleMap>
+                  )
+                : null}
             </div>
           </div>
           {!user ? (

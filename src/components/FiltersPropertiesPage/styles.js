@@ -11,10 +11,15 @@ export const FilterContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
   }
 
   @media only screen and (max-width: 1100px) {
     flex-direction: column;
+
+    .button-clear {
+      width: 100%;
+    }
   }
 
   @media only screen and (max-width: 650px) {

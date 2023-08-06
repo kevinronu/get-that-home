@@ -22,7 +22,12 @@ export default function FilterPropertiesPage() {
         <FilterPetArea />
       </div>
       <FilterOperationType />
-      <Button onClick={clearFilters} type="secondary" size="lg">
+      <Button
+        onClick={clearFilters}
+        type="secondary"
+        size="lg"
+        className="button-clear"
+      >
         Clear Filters
       </Button>
     </FilterContainer>

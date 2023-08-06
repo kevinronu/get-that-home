@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { fonts } from "../../styles";
 
 export const StyledContainer = styled.div`
+  flex-grow: 1;
+  width: 100%;
   padding: 0.5rem;
   display: flex;
   gap: 0.5rem;
@@ -11,6 +13,7 @@ export const StyledContainer = styled.div`
 
   .input {
     font-family: ${fonts.secondary};
+    width: 100%;
   }
 
   .input::placeholder {

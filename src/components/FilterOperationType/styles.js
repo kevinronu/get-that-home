@@ -15,4 +15,8 @@ export const StyledSelect = styled.select`
   :focus {
     outline: 0.1875rem solid ${(props) => props.theme.colors.info};
   }
+
+  @media only screen and (max-width: 1100px) {
+    width: 100%;
+  }
 `;

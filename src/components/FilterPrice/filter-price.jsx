@@ -55,11 +55,7 @@ export default function FilterPrice() {
 
   return (
     <StyledContainer>
-      <Button
-        type="primary"
-        onClick={handleToggleFilter}
-        className="filter-button"
-      >
+      <Button type="primary" onClick={handleToggleFilter} isFullWidth>
         {calcText()}
       </Button>
       {showFilter && (

@@ -3,10 +3,7 @@ import { fonts } from "../../styles";
 
 export const StyledContainer = styled.div`
   position: relative;
-
-  .filter-button {
-    width: 8.7rem;
-  }
+  width: 100%;
 
   .container {
     z-index: 1;

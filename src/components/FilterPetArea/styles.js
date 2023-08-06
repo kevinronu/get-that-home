@@ -3,6 +3,7 @@ import { fonts } from "../../styles";
 
 export const StyledContainer = styled.div`
   position: relative;
+  width: 100%;
 
   .container {
     z-index: 1;

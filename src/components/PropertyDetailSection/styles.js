@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { fonts } from "../../styles";
 
 export const StyledSection = styled.section`
+  margin: 16px 0;
+
   .container {
     display: flex;
     justify-content: space-between;

@@ -51,7 +51,7 @@ export default function FilterPetArea() {
       >
         <>
           MORE
-          <RiArrowDownSLine size={"1.5rem"} />
+          <RiArrowDownSLine size={"1.25rem"} />
         </>
       </Button>
       {showFilter && (

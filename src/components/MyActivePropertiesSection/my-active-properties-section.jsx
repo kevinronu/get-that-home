@@ -37,7 +37,7 @@ export default function MyActivePropertiesSection() {
       <Section size="xs">
         <Container size="xl" padding={"1rem"}>
           <>
-            <Anchor to={"/property/create"} type="primary">
+            <Anchor to={"/property/create"} type="primary" fit={"true"}>
               Create Property
             </Anchor>
             <StyledNav>

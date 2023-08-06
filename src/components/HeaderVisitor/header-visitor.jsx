@@ -28,21 +28,12 @@ function HeaderVisitor() {
           </div>
           <ul className="navbar__links">
             <li className="link">
-              <Anchor
-                icon={<HiMagnifyingGlass />}
-                to={"/properties"}
-                isFullWidth={true}
-              >
+              <Anchor icon={<HiMagnifyingGlass />} to={"/properties"}>
                 FIND A HOME
               </Anchor>
             </li>
             <li className="link">
-              <Anchor
-                icon={<TbUserPlus />}
-                type={"secondary"}
-                to={"/sign_up"}
-                isFullWidth={true}
-              >
+              <Anchor icon={<TbUserPlus />} type={"secondary"} to={"/sign_up"}>
                 JOIN
               </Anchor>
             </li>

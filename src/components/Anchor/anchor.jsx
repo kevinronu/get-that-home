@@ -17,8 +17,8 @@ Anchor.propTypes = {
   to: PropTypes.string,
   type: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
   size: PropTypes.oneOf(["sm", "lg"]),
-  isFullWidth: PropTypes.bool,
   rounded: PropTypes.bool,
+  fit: PropTypes.string,
   onClick: PropTypes.func,
 };
 

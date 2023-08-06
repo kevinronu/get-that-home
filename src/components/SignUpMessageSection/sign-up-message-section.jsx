@@ -10,7 +10,7 @@ export default function SignUpMessageSection() {
           <StyledH3>
             Getting someone to rent your apartment has never been this easy
           </StyledH3>
-          <Anchor type="primary" size="lg" to={"/sign_up"}>
+          <Anchor type="primary" size="lg" to={"/sign_up"} fit="true">
             CREATE AN ACCOUNT NOW
           </Anchor>
         </StyledContainer>

@@ -9,6 +9,8 @@ const PropertyContext = createContext();
 function PropertyProvider(props) {
   const navigate = useNavigate();
   const [properties, setProperties] = useState([]);
+  const [datalist, setDatalist] = useState([]);
+  const [datalistCity, setDatalistCity] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [filters, setFilters] = useState({
     address: "",
@@ -32,7 +34,24 @@ function PropertyProvider(props) {
   }, []);
 
   useEffect(() => {
-    setFilteredProperties(filterProperties(properties, filters));
+    const newFilteredProperties = filterProperties(properties, filters);
+
+    const newDatalistCity = new Set();
+    const newDatalist = new Set(
+      newFilteredProperties.map((property) => property.address)
+    );
+
+    newFilteredProperties.forEach((property) => {
+      newDatalistCity.add(property.city);
+      newDatalist.add(property.city);
+    });
+
+    const arrayDataList = Array.from(newDatalist);
+    const arrayDataListCity = Array.from(newDatalistCity);
+
+    setDatalist(arrayDataList);
+    setDatalistCity(arrayDataListCity);
+    setFilteredProperties(newFilteredProperties);
   }, [properties, filters]);
 
   function handleFilters(newFilters) {
@@ -78,6 +97,8 @@ function PropertyProvider(props) {
 
   const value = {
     properties,
+    datalist,
+    datalistCity,
     filters,
     filteredProperties,
     clearFilters,

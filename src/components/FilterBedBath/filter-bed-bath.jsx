@@ -47,7 +47,7 @@ export default function FilterBedBath() {
 
   return (
     <StyledContainer>
-      <Button type="primary" onClick={handleToggleFilter} isFullWidth>
+      <Button type="primary" onClick={handleToggleFilter} isFullWidth={true}>
         {calcText()}
       </Button>
       {showFilter && (

@@ -54,7 +54,7 @@ export default function FilterPropertyType() {
 
   return (
     <StyledContainer>
-      <Button type="primary" onClick={handleToggleFilter} isFullWidth>
+      <Button type="primary" onClick={handleToggleFilter} isFullWidth={true}>
         {calcText()}
       </Button>
       {showFilter && (

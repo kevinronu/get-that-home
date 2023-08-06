@@ -44,7 +44,7 @@ export default function FilterPetArea() {
 
   return (
     <StyledContainer>
-      <Button type="primary" onClick={handleToggleFilter} isFullWidth>
+      <Button type="primary" onClick={handleToggleFilter} isFullWidth={true}>
         <>
           MORE
           <RiArrowDownSLine size={"1.25rem"} />

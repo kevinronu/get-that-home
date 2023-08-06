@@ -57,7 +57,7 @@ function LoginModal({ toggleModal }) {
               name={"email"}
               type={"email"}
               placeholder={"user@mail.com"}
-              isFullWidth
+              isFullWidth={true}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -72,7 +72,7 @@ function LoginModal({ toggleModal }) {
               name={"password"}
               type={"password"}
               placeholder={"******"}
-              isFullWidth
+              isFullWidth={true}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
@@ -89,7 +89,7 @@ function LoginModal({ toggleModal }) {
             icon={<RiUserReceived2Line />}
             type={"primary"}
             to={"/login"}
-            isFullWidth
+            isFullWidth={true}
             disabled={!(formik.isValid && formik.dirty)}
           >
             LOGIN

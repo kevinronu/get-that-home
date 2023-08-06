@@ -31,7 +31,7 @@ function HeaderSeeker() {
               <Anchor
                 icon={<HiMagnifyingGlass />}
                 to={"/properties"}
-                isFullWidth
+                isFullWidth={true}
               >
                 FIND A HOME
               </Anchor>
@@ -41,7 +41,7 @@ function HeaderSeeker() {
                 icon={<RiLogoutCircleLine />}
                 type={"secondary"}
                 onClick={logout}
-                isFullWidth
+                isFullWidth={true}
               >
                 LOGOUT
               </Button>
@@ -51,7 +51,7 @@ function HeaderSeeker() {
                 icon={<GoHeartFill />}
                 type={"primary"}
                 to={"/saved_properties"}
-                isFullWidth
+                isFullWidth={true}
               >
                 SAVED PROPERTIES
               </Anchor>
@@ -61,7 +61,7 @@ function HeaderSeeker() {
                 icon={<RiUserLine />}
                 type={"primary"}
                 to={"/profile"}
-                isFullWidth
+                isFullWidth={true}
               >
                 PROFILE
               </Anchor>

@@ -31,7 +31,7 @@ function HeaderVisitor() {
               <Anchor
                 icon={<HiMagnifyingGlass />}
                 to={"/properties"}
-                isFullWidth
+                isFullWidth={true}
               >
                 FIND A HOME
               </Anchor>
@@ -41,7 +41,7 @@ function HeaderVisitor() {
                 icon={<TbUserPlus />}
                 type={"secondary"}
                 to={"/sign_up"}
-                isFullWidth
+                isFullWidth={true}
               >
                 JOIN
               </Anchor>
@@ -52,7 +52,7 @@ function HeaderVisitor() {
                 type={"primary"}
                 to={"/login"}
                 onClick={handleModal}
-                isFullWidth
+                isFullWidth={true}
               >
                 LOGIN
               </Button>

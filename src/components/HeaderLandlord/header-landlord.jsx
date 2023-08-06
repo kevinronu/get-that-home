@@ -30,7 +30,7 @@ function HeaderLandlord() {
               <Anchor
                 icon={<HiMagnifyingGlass />}
                 to={"/properties"}
-                isFullWidth
+                isFullWidth={true}
               >
                 FIND A HOME
               </Anchor>
@@ -40,7 +40,7 @@ function HeaderLandlord() {
                 icon={<RiLogoutCircleLine />}
                 type={"secondary"}
                 onClick={logout}
-                isFullWidth
+                isFullWidth={true}
               >
                 LOGOUT
               </Button>
@@ -50,7 +50,7 @@ function HeaderLandlord() {
                 icon={<RiHome8Line />}
                 type={"primary"}
                 to={"/my_properties"}
-                isFullWidth
+                isFullWidth={true}
               >
                 MY PROPERTIES
               </Anchor>
@@ -60,7 +60,7 @@ function HeaderLandlord() {
                 icon={<RiUserLine />}
                 type={"primary"}
                 to={"/profile"}
-                isFullWidth
+                isFullWidth={true}
               >
                 PROFILE
               </Anchor>

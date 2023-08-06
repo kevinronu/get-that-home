@@ -37,19 +37,12 @@ export const ModalContent = styled.div`
     margin-bottom: 1rem;
   }
 
-  .form__email-error {
-    min-height: 1.5em;
-    margin-bottom: 0.875rem;
-    font-size: 0.75rem;
+  .form__error {
+    min-height: 1rem;
     font-family: ${fonts.secondary};
-    letter-spacing: 0.09375rem;
-  }
-
-  .form__password-error {
-    min-height: 1.5em;
     font-size: 0.75rem;
-    font-family: ${fonts.secondary};
-    letter-spacing: 0.09375rem;
+    line-height: 1rem;
+    letter-spacing: 0.025rem;
   }
 
   @media only screen and (max-width: 410px) {

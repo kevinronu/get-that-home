@@ -49,7 +49,7 @@ function LoginModal({ toggleModal }) {
   return (
     <Modal onClick={toggleModal}>
       <ModalContent onClick={handlePropagation}>
-        <p className="title">Login</p>
+        <h2 className="title">Login</h2>
         <form onSubmit={formik.handleSubmit} className="form">
           <div className="form__inputs">
             <Input
@@ -63,9 +63,9 @@ function LoginModal({ toggleModal }) {
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? (
-              <div className="form__email-error">{formik.errors.email}</div>
+              <div className="form__error">{formik.errors.email}</div>
             ) : (
-              <div className="form__email-error"></div>
+              <div className="form__error"></div>
             )}
             <Input
               label={"PASSWORD"}
@@ -78,17 +78,14 @@ function LoginModal({ toggleModal }) {
               value={formik.values.password}
             />
             {formik.touched.password && formik.errors.password ? (
-              <div className="form__password-error">
-                {formik.errors.password}
-              </div>
+              <div className="form__error">{formik.errors.password}</div>
             ) : (
-              <div className="form__password-error"></div>
+              <div className="form__error"></div>
             )}
           </div>
           <Button
             icon={<RiUserReceived2Line />}
             type={"primary"}
-            to={"/login"}
             isFullWidth={true}
             disabled={!(formik.isValid && formik.dirty)}
           >

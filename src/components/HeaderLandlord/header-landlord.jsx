@@ -27,7 +27,11 @@ function HeaderLandlord() {
           </div>
           <ul className="navbar__links">
             <li className="link">
-              <Anchor icon={<HiMagnifyingGlass />} to={"/properties"}>
+              <Anchor
+                icon={<HiMagnifyingGlass />}
+                to={"/properties"}
+                isFullWidth
+              >
                 FIND A HOME
               </Anchor>
             </li>
@@ -36,6 +40,7 @@ function HeaderLandlord() {
                 icon={<RiLogoutCircleLine />}
                 type={"secondary"}
                 onClick={logout}
+                isFullWidth
               >
                 LOGOUT
               </Button>
@@ -45,12 +50,18 @@ function HeaderLandlord() {
                 icon={<RiHome8Line />}
                 type={"primary"}
                 to={"/my_properties"}
+                isFullWidth
               >
                 MY PROPERTIES
               </Anchor>
             </li>
             <li className="link">
-              <Anchor icon={<RiUserLine />} type={"primary"} to={"/profile"}>
+              <Anchor
+                icon={<RiUserLine />}
+                type={"primary"}
+                to={"/profile"}
+                isFullWidth
+              >
                 PROFILE
               </Anchor>
             </li>

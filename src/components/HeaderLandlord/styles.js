@@ -64,6 +64,10 @@ export const StyledNav = styled.nav`
       width: 100%;
     }
 
+    .link {
+      width: 100%;
+    }
+
     .toggle-checkbox {
       display: flex;
     }

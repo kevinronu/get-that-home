@@ -27,31 +27,42 @@ function HeaderSeeker() {
             </label>
           </div>
           <ul className="navbar__links">
-            <li>
-              <Anchor icon={<HiMagnifyingGlass />} to={"/properties"}>
+            <li className="link">
+              <Anchor
+                icon={<HiMagnifyingGlass />}
+                to={"/properties"}
+                isFullWidth
+              >
                 FIND A HOME
               </Anchor>
             </li>
-            <li>
+            <li className="link">
               <Button
                 icon={<RiLogoutCircleLine />}
                 type={"secondary"}
                 onClick={logout}
+                isFullWidth
               >
                 LOGOUT
               </Button>
             </li>
-            <li>
+            <li className="link">
               <Anchor
                 icon={<GoHeartFill />}
                 type={"primary"}
                 to={"/saved_properties"}
+                isFullWidth
               >
                 SAVED PROPERTIES
               </Anchor>
             </li>
-            <li>
-              <Anchor icon={<RiUserLine />} type={"primary"} to={"/profile"}>
+            <li className="link">
+              <Anchor
+                icon={<RiUserLine />}
+                type={"primary"}
+                to={"/profile"}
+                isFullWidth
+              >
                 PROFILE
               </Anchor>
             </li>

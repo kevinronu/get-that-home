@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 import { tokenKey } from "../config";
 import * as auth from "../services/auth-service";
-import { createUser, getUser } from "../services/user-service";
+import * as userService from "../services/user-service";
 
 const AuthContext = createContext();
 
@@ -14,7 +14,8 @@ function AuthProvider(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUser()
+    userService
+      .getUser()
       .then((user) => {
         setUser(user);
       })
@@ -32,7 +33,18 @@ function AuthProvider(props) {
   }
 
   function signUp(userData) {
-    createUser(userData)
+    userService
+      .createUser(userData)
+      .then((user) => {
+        setUser(user);
+        navigate("/home");
+      })
+      .catch(console.log);
+  }
+
+  function updateUser(userData) {
+    userService
+      .updateUser(userData)
       .then((user) => {
         setUser(user);
         navigate("/home");
@@ -59,6 +71,7 @@ function AuthProvider(props) {
     user,
     login,
     signUp,
+    updateUser,
     logout,
     isLoginModalActive,
     handleModal,

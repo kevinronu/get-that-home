@@ -16,9 +16,9 @@ import { StyledSection } from "./styles";
 import Slideshow from "../Slideshow";
 
 const containerStyle = {
-  "min-width": "343px",
-  "aspect-ratio": "1/1",
-  "max-width": "512px",
+  minWidth: "343px",
+  aspectRatio: "1/1",
+  maxWidth: "512px",
   margin: "auto",
 };
 

@@ -16,8 +16,13 @@ export function filterProperties(
   return properties
     .filter((property) => !property.closed)
     .filter((property) => {
-      const regex = new RegExp(filters.address, "i");
-      return filters.address === "" || property.address.search(regex) >= 0;
+      const regexAddress = new RegExp(filters.address, "i");
+      const regexCity = new RegExp(filters.city, "i");
+      return (
+        filters.address === "" ||
+        property.address.search(regexAddress) >= 0 ||
+        property.address.search(regexCity) >= 0
+      );
     })
     .filter((property) => {
       if (property.operation_type === "rent") {

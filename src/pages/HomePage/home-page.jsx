@@ -3,7 +3,7 @@ import { useContext } from "react";
 import SignUpMessageSection from "../../components/SignUpMessageSection";
 import BestPropertiesSection from "../../components/BestPropertiesSection";
 import MeetHomeSection from "../../components/MeetHomeSection";
-import FooterHome from "../../components/FooterHome";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { AuthContext } from "../../context/auth-context";
 import { PropertyContext } from "../../context/property-context";
@@ -18,7 +18,7 @@ export default function HomePage() {
       <MeetHomeSection />
       <BestPropertiesSection best_properties={properties.slice(0, 3)} />
       {user ? "" : <SignUpMessageSection />}
-      <FooterHome />
+      <Footer />
     </>
   );
 }

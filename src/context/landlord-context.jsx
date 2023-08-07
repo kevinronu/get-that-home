@@ -2,10 +2,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import * as propertyServices from "../services/property-service";
 import { PropertyContext } from "./property-context";
+import { useNavigate } from "react-router-dom";
 
 const LandlordContext = createContext();
 
 function LandlordProvider(props) {
+  const navigate = useNavigate();
   const [myProperties, setMyProperties] = useState([]);
   const { createProperty, deleteProperty, updateProperty } =
     useContext(PropertyContext);
@@ -26,6 +28,7 @@ function LandlordProvider(props) {
         const newMyProperties = [...myProperties, property];
         setMyProperties(newMyProperties);
         createProperty(property);
+        navigate(`/property/detail/${property.id}`);
       })
       .catch(console.log);
   }

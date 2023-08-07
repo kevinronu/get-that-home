@@ -34,20 +34,34 @@ export default function CreateRentalPropertySection() {
     about: "",
     operation_type: "rent",
     user_id: user?.id,
+    images: [],
   });
-
-  const [images, setImages] = useState([]);
 
   function handleChange(event) {
     const name = event.target.name;
-    const value =
-      event.target.type === "checkbox"
-        ? event.target.checked
-        : event.target.value;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    if (name === "images") {
+      const MAX_FILE_SIZE = 5120; //MB
+      const KB = 1024;
+      const images = Array.from(event.target.files);
+      if (images.every((image) => image.size / KB <= MAX_FILE_SIZE)) {
+        setFormData((prevData) => ({
+          ...prevData,
+          images: images,
+        }));
+      } else {
+        event.target.value = null;
+        alert("Some image size exceeds the allowed limit");
+      }
+    } else {
+      const value =
+        event.target.type === "checkbox"
+          ? event.target.checked
+          : event.target.value;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   }
 
   function handleSubmit(event) {
@@ -62,19 +76,16 @@ export default function CreateRentalPropertySection() {
         propertyData.append("country", value.split(",")[2]);
         continue;
       }
+      if (key === "images") {
+        for (let i = 0; i < formData.images.length; i++) {
+          propertyData.append("images[]", formData.images[i]);
+        }
+        continue;
+      }
       propertyData.append(key, value);
     }
 
-    for (let i = 0; i < images.length; i++) {
-      propertyData.append("images[]", images[i]);
-    }
-
     createOwnProperty(propertyData);
-  }
-
-  function handleImageChange(e) {
-    const selectedImages = Array.from(e.target.files);
-    setImages([...images, ...selectedImages]);
   }
 
   return (
@@ -225,18 +236,25 @@ export default function CreateRentalPropertySection() {
                   type="file"
                   multiple
                   name="images"
-                  onChange={handleImageChange}
+                  onChange={handleChange}
+                  accept="image/*"
                 />
                 <blockquote className="quote">Only images, max 5MB</blockquote>
               </label>
               <div className="images-container">
-                {images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={URL.createObjectURL(image)}
-                    className="images-container__image"
-                  />
-                ))}
+                {formData.images.length === 0 ? (
+                  <div className="images-container__no-image">
+                    No photos yet
+                  </div>
+                ) : (
+                  formData.images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={URL.createObjectURL(image)}
+                      className="images-container__image"
+                    />
+                  ))
+                )}
               </div>
             </div>
             <Button type="primary" size="lg">

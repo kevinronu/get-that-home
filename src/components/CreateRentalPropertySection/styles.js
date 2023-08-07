@@ -12,6 +12,7 @@ export const StyledLinksContainer = styled.div`
   font-size: 0.875rem;
   line-height: 1.25rem; /* 142.857% */
   letter-spacing: 0.01563rem;
+  margin-bottom: 1rem;
 
   .links-title {
     font-size: 0.625rem;
@@ -102,23 +103,29 @@ export const StyledForm = styled.form`
   }
 
   .images-container {
-    background-color: ${(props) => props.theme.colors.background.lighter};
-    max-height: 8.5rem;
+    background-color: ${(props) => props.theme.colors.background.light};
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
   }
 
-  .images-container__image {
-    max-height: 7.5rem;
-    max-width: 7.5rem;
-    object-fit: cover;
+  .images-container__no-image {
+    background-color: ${(props) => props.theme.colors.background.lighter};
+    height: 7.5rem;
     aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+  }
+
+  .images-container__image {
+    height: 7.5rem;
+    width: 7.5rem;
+    object-fit: cover;
   }
 
   .photos-title {
-    font-family: Montserrat;
+    font-family: ${fonts.primary};
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.75rem; /* 140% */

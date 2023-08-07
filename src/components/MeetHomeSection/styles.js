@@ -22,9 +22,20 @@ export const StyledH1 = styled.h1`
   line-height: 5.5rem;
   letter-spacing: -0.03125rem;
   text-align: center;
+
+  @media only screen and (max-width: 580px) {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+  }
 `;
 
 export const Info = styled.p`
   font-size: 1.5rem;
   text-align: center;
+  margin-bottom: 2rem;
+
+  @media only screen and (max-width: 580px) {
+    font-size: 1.25rem;
+  }
 `;

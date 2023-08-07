@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { StyledInput, StyledLabel, StyledContainer } from "./styles";
+import { StyledInput, StyledLabel, StyledContainer, StyledDiv } from "./styles";
 
 function InputWithIcon({
   icon,
@@ -14,7 +14,7 @@ function InputWithIcon({
   ...props
 }) {
   return (
-    <div>
+    <StyledDiv {...props}>
       {label ? <StyledLabel htmlFor={id || name}>{label}</StyledLabel> : ""}
       <StyledContainer>
         {icon}
@@ -28,7 +28,7 @@ function InputWithIcon({
           {...props}
         />
       </StyledContainer>
-    </div>
+    </StyledDiv>
   );
 }
 

@@ -74,6 +74,7 @@ function LandlordPropertyCard({ property, isOwner }) {
         to={`/property/edit/${
           operation_type === "rent" ? "rent" : "sale"
         }/${id}`}
+        className="edit-anchor"
       >
         EDIT
       </Anchor>

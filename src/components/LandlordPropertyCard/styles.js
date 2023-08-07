@@ -97,4 +97,8 @@ export const OwnerMenu = styled.div`
   align-items: center;
   padding-top: 0.4rem;
   justify-content: space-evenly;
+
+  .edit-anchor {
+    width: fit-content;
+  }
 `;

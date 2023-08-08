@@ -23,6 +23,8 @@ const containerStyle = {
   margin: "auto",
 };
 
+const libraries = ["places"];
+
 export default function PropertyDetailSection() {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
@@ -33,6 +35,7 @@ export default function PropertyDetailSection() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+    libraries: libraries,
   });
 
   useEffect(() => {

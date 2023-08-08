@@ -87,9 +87,9 @@ export default function CreateRentalPropertySection() {
       const propertyData = new FormData();
       for (const [key, value] of Object.entries(values)) {
         if (key === "address") {
-          propertyData.append("address", value.split(",")[0]);
-          propertyData.append("city", value.split(",")[1]);
-          propertyData.append("country", value.split(",")[2]);
+          propertyData.append("address", value.split(", ")[0]);
+          propertyData.append("city", value.split(", ")[1]);
+          propertyData.append("country", value.split(", ")[2]);
           continue;
         }
         if (key === "images") {

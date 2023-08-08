@@ -5,6 +5,7 @@ import { MdOutlinePets } from "react-icons/md";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 
+import DefaultImage from "../../assets/images/default-property-image.webp";
 import PropertyWindowVisitor from "../PropertyWindowVisitor";
 import PropertyWindowLandlord from "../PropertyWindowLandlord";
 import PropertyWindowSeeker from "../PropertyWindowSeeker";
@@ -55,9 +56,13 @@ export default function PropertyDetailSection() {
       <Container size={"xl"} padding={"1rem"}>
         <div className="container">
           <div className="property-info">
-            <Slideshow images={property.images} />
+            <Slideshow
+              images={
+                property.images?.length != 0 ? property.images : [DefaultImage]
+              }
+            />
             <div className="address-price">
-              <p>{property.address}</p>
+              <p className="address-price__address">{property.address}</p>
               <div className="address-price__price">
                 <RiMoneyDollarCircleLine />
                 {property.operation_type === "rent" ? (

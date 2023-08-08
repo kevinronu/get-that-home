@@ -24,6 +24,10 @@ export const StyledSection = styled.section`
     letter-spacing: 0.01563rem;
   }
 
+  .address-price__address {
+    max-width: 35rem;
+  }
+
   .address-price__price {
     display: flex;
     gap: 0.25rem;

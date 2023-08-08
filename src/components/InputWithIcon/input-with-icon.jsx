@@ -11,6 +11,7 @@ function InputWithIcon({
   onChange,
   placeholder,
   label,
+  googleRef,
   ...props
 }) {
   return (
@@ -25,6 +26,7 @@ function InputWithIcon({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          ref={googleRef}
           {...props}
         />
       </StyledContainer>
@@ -43,6 +45,7 @@ InputWithIcon.propTypes = {
     PropTypes.bool,
   ]),
   onChange: PropTypes.func,
+  googleRef: PropTypes.object,
   isFullWidth: PropTypes.bool,
   placeholder: PropTypes.string,
   label: PropTypes.string,

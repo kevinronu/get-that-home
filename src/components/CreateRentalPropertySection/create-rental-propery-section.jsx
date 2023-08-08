@@ -18,11 +18,22 @@ import {
   StyledLinksContainer,
   StyledTextArea,
 } from "./styles";
+import { usePlacesWidget } from "react-google-autocomplete";
 
 export default function CreateRentalPropertySection() {
   const { createOwnProperty } = useContext(LandlordContext);
   const { user } = useContext(AuthContext);
   const [images, SetImages] = useState([]);
+  const { ref } = usePlacesWidget({
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+    onPlaceSelected: (place) => {
+      console.log(place);
+    },
+    options: {
+      types: ["address"],
+      // componentRestrictions: { country: "pe" },
+    },
+  });
 
   const handleImages = (event) => {
     const MAX_FILE_SIZE = 5120; //MB
@@ -144,6 +155,7 @@ export default function CreateRentalPropertySection() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.address}
+              googleRef={ref}
             />
             {formik.touched.address && formik.errors.address ? (
               <div className="form__error">{formik.errors.address}</div>
@@ -154,6 +166,7 @@ export default function CreateRentalPropertySection() {
               label="MONTHLY RENT"
               icon={<TbCoin size={"1.25rem"} />}
               type="number"
+              min="1"
               name="monthly_rent"
               placeholder="2000"
               onChange={formik.handleChange}
@@ -169,6 +182,7 @@ export default function CreateRentalPropertySection() {
               label="MAINTENANCE"
               icon={<TbCoin size={"1.25rem"} />}
               type="number"
+              min="1"
               name="maintenance"
               placeholder="100"
               onChange={formik.handleChange}
@@ -257,6 +271,7 @@ export default function CreateRentalPropertySection() {
                   label="AREA IN M2"
                   name="area"
                   type="number"
+                  min="1"
                   placeholder="##"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}

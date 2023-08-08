@@ -5,6 +5,11 @@ export const StyledH1 = styled.h1`
   font-size: 2.25rem;
   line-height: 3rem;
   margin-bottom: 1rem;
+
+  @media only screen and (max-width: 430px) {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+  }
 `;
 
 export const StyledLinksContainer = styled.div`
@@ -111,6 +116,7 @@ export const StyledForm = styled.form`
   .images-container {
     background-color: ${(props) => props.theme.colors.background.light};
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;

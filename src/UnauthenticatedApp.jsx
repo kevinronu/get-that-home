@@ -8,6 +8,7 @@ import SignUpFormPage from "./pages/SignUpFormPage";
 import LoginModal from "./components/LoginModal";
 import SignUpPage from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function UnauthenticatedApp() {
   const { isLoginModalActive, handleModal } = useContext(AuthContext);
@@ -29,6 +30,7 @@ function UnauthenticatedApp() {
         <Route path="property">
           <Route path="detail/:id" element={<PropertyDetailPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {isLoginModalActive && <LoginModal toggleModal={handleModal} />}
     </>

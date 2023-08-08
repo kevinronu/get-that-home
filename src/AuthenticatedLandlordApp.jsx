@@ -11,6 +11,7 @@ import CreateSalePropertyPage from "./pages/CreateSalePropertyPage";
 import ProfilePage from "./pages/ProfilePage";
 import MyActivePropertiesPage from "./pages/MyActivePropertiesPage";
 import MyClosedPropertiesPage from "./pages/MyClosedPropertiesPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function AuthenticatedLandlordApp() {
   return (
@@ -49,6 +50,7 @@ function AuthenticatedLandlordApp() {
             </Route>
           </Route>
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </LandlordProvider>
   );

@@ -7,6 +7,7 @@ import PropertyDetailPage from "./pages/PropertyDetailPage";
 import SavedContactedPropertiesPage from "./pages/SavedContactedPropertiesPage";
 import SavedFavoritePropertiesPage from "./pages/SavedFavoritePropertiesPage";
 import ProfilePage from "./pages/ProfilePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function AuthenticatedSeekerApp() {
   return (
@@ -41,6 +42,7 @@ function AuthenticatedSeekerApp() {
             </Route>
           </Route>
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </SeekerProvider>
   );

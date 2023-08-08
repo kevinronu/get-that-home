@@ -33,6 +33,25 @@ function LandlordProvider(props) {
       .catch(console.log);
   }
 
+  function updateOwnProperty(id, propertyData) {
+    const indexToUpdate = myProperties.findIndex(
+      (myProperty) => myProperty.id === id
+    );
+    propertyServices
+      .updateProperty(id, propertyData)
+      .then((property) => {
+        const newMyProperties = [
+          ...myProperties.slice(0, indexToUpdate),
+          property,
+          ...myProperties.slice(indexToUpdate + 1),
+        ];
+        setMyProperties(newMyProperties);
+        updateProperty(property);
+        navigate(`/property/detail/${property.id}`);
+      })
+      .catch(console.log);
+  }
+
   function closeOwnProperty(id) {
     const indexToUpdate = myProperties.findIndex(
       (myProperty) => myProperty.id === id
@@ -85,6 +104,7 @@ function LandlordProvider(props) {
   const value = {
     myProperties,
     createOwnProperty,
+    updateOwnProperty,
     closeOwnProperty,
     restoreOwnProperty,
     deleteOwnProperty,

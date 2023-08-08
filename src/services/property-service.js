@@ -17,14 +17,21 @@ export async function createProperty(propertyData) {
   return await apiFetchWithImage(`/properties`, { body: propertyData });
 }
 
-export async function updateProperty(propertyData, propertyId) {
-  let dataCleaned = Object.fromEntries(
-    Object.entries(propertyData).filter(([, v]) => v !== "")
-  );
+// export async function updateProperty(propertyData, propertyId) {
+//   let dataCleaned = Object.fromEntries(
+//     Object.entries(propertyData).filter(([, v]) => v !== "")
+//   );
 
-  return await apiFetch(`/properties/${propertyId}`, {
+//   return await apiFetch(`/properties/${propertyId}`, {
+//     method: "PATCH",
+//     body: dataCleaned,
+//   });
+// }
+
+export async function updateProperty(propertyId, propertyData) {
+  return await apiFetchWithImage(`/properties/${propertyId}`, {
     method: "PATCH",
-    body: dataCleaned,
+    body: propertyData,
   });
 }
 

@@ -63,27 +63,7 @@ export const StyledForm = styled.form`
     letter-spacing: 0.025rem;
   }
 
-  .label-container {
-    display: flex;
-    gap: 0.25rem;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .label {
-    color: ${(props) => props.theme.colors.text.light};
-    font-size: 0.625rem;
-    font-family: ${fonts.secondary};
-    letter-spacing: 0.09375rem;
-  }
-
-  .form__type {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .form__property {
+  .form__selects {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -94,10 +74,11 @@ export const StyledForm = styled.form`
     max-width: 6rem;
   }
 
-  .form__pets {
+  .label {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
   }
 
   .quote {
@@ -105,6 +86,26 @@ export const StyledForm = styled.form`
     font-size: 0.75rem;
     letter-spacing: 0.025rem;
     margin-bottom: 1rem;
+  }
+
+  .label__info {
+    color: ${(props) => props.theme.colors.text.light};
+    font-size: 0.625rem;
+    font-family: ${fonts.secondary};
+    letter-spacing: 0.09375rem;
+  }
+
+  .photos-title {
+    font-family: ${fonts.primary};
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75rem; /* 140% */
+    letter-spacing: 0.00938rem;
+  }
+
+  .photos-instructions {
+    font-size: 0.625rem;
+    letter-spacing: 0.09375rem;
   }
 
   .images-container {
@@ -128,19 +129,6 @@ export const StyledForm = styled.form`
     height: 7.5rem;
     width: 7.5rem;
     object-fit: cover;
-  }
-
-  .photos-title {
-    font-family: ${fonts.primary};
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.75rem; /* 140% */
-    letter-spacing: 0.00938rem;
-  }
-
-  .photos-instructions {
-    font-size: 0.625rem;
-    letter-spacing: 0.09375rem;
   }
 `;
 

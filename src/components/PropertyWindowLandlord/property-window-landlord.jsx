@@ -18,7 +18,7 @@ export default function PropertyWindowLandlord({ id }) {
         className="Anchor"
         icon={<RiUserReceived2Line />}
         type={"primary"}
-        to={`/property/edit/${id}`}
+        to={`/property/edit/${property.operation_type}/${id}`}
       >
         EDIT PROPERTY
       </Anchor>

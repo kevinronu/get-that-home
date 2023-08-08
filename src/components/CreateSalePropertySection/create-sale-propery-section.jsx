@@ -197,10 +197,10 @@ export default function CreateSalePropertySection() {
               placeholder="30000"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.monthly_rent}
+              value={formik.values.price}
             />
-            {formik.touched.monthly_rent && formik.errors.monthly_rent ? (
-              <div className="form__error">{formik.errors.monthly_rent}</div>
+            {formik.touched.price && formik.errors.price ? (
+              <div className="form__error">{formik.errors.price}</div>
             ) : (
               <div className="form__error"></div>
             )}

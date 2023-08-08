@@ -47,9 +47,6 @@ export const StyledLinksContainer = styled.div`
 
 export const StyledForm = styled.form`
   font-family: ${fonts.secondary};
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   max-width: 37.5rem;
 
   .form {
@@ -57,6 +54,13 @@ export const StyledForm = styled.form`
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
+  }
+
+  .form__error {
+    min-height: 1rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.025rem;
   }
 
   .label-container {
@@ -83,6 +87,7 @@ export const StyledForm = styled.form`
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 0.25rem;
   }
 
   .input-area {
@@ -97,9 +102,9 @@ export const StyledForm = styled.form`
 
   .quote {
     color: ${(props) => props.theme.colors.text.light};
-    font-family: Inter;
     font-size: 0.75rem;
     letter-spacing: 0.025rem;
+    margin-bottom: 1rem;
   }
 
   .images-container {
@@ -108,6 +113,7 @@ export const StyledForm = styled.form`
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .images-container__no-image {

@@ -4,12 +4,16 @@ import { StyledLabel, StyledSelect } from "./styles";
 
 // options = [{label: "Peru", value: "PE"}, ...]
 
-function Select({ label, options, defaultValue, ...rest }) {
+function Select({ label, options, instruction, ...rest }) {
   return (
     <div>
       {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledSelect {...rest} defaultValue={defaultValue}>
-        {defaultValue && <option value="">{defaultValue}</option>}
+      <StyledSelect {...rest}>
+        {instruction && (
+          <option value="" disabled>
+            {instruction}
+          </option>
+        )}
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -23,7 +27,7 @@ function Select({ label, options, defaultValue, ...rest }) {
 Select.propTypes = {
   label: PropTypes.string,
   options: PropTypes.array,
-  defaultValue: PropTypes.string,
+  instruction: PropTypes.string,
 };
 
 export default Select;

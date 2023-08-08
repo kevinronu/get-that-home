@@ -131,10 +131,24 @@ export const StyledForm = styled.form`
     place-items: center;
   }
 
+  .images-container__container {
+    position: relative;
+  }
+
   .images-container__image {
     height: 7.5rem;
     width: 7.5rem;
     object-fit: cover;
+  }
+
+  .images-container__delete {
+    border-radius: 0 0 0 0.5rem;
+    border: 1px solid transparent;
+    backdrop-filter: blur(0.5rem);
+    position: absolute;
+    top: 0;
+    right: 0;
+    fill: ${(props) => props.theme.colors.red[300]};
   }
 `;
 

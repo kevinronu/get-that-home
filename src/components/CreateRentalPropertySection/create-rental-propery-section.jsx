@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { useContext, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import { TiDelete } from "react-icons/ti";
 import { TbCoin } from "react-icons/tb";
 import { useFormik } from "formik";
 
@@ -23,29 +24,6 @@ import { usePlacesWidget } from "react-google-autocomplete";
 export default function CreateRentalPropertySection() {
   const { createOwnProperty } = useContext(LandlordContext);
   const { user } = useContext(AuthContext);
-  const [images, SetImages] = useState([]);
-  const { ref } = usePlacesWidget({
-    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
-    onPlaceSelected: (place) => {
-      console.log(place);
-    },
-    options: {
-      types: ["address"],
-      // componentRestrictions: { country: "pe" },
-    },
-  });
-
-  const handleImages = (event) => {
-    const MAX_FILE_SIZE = 5120; //MB
-    const KB = 1024;
-    const images = Array.from(event.target.files);
-    if (images.every((image) => image.size / KB <= MAX_FILE_SIZE)) {
-      SetImages(images);
-    } else {
-      event.target.value = null;
-      alert("Some image size exceeds the allowed limit");
-    }
-  };
 
   const validate = (values) => {
     const errors = {};
@@ -82,6 +60,10 @@ export default function CreateRentalPropertySection() {
       errors.operation_type = "Required";
     }
 
+    if (values.images.length === 0) {
+      errors.images = "Upload at least one photo";
+    }
+
     return errors;
   };
 
@@ -98,6 +80,7 @@ export default function CreateRentalPropertySection() {
       about: "",
       operation_type: "rent",
       user_id: user?.id,
+      images: [],
     },
     validate,
     onSubmit: (values) => {
@@ -109,14 +92,63 @@ export default function CreateRentalPropertySection() {
           propertyData.append("country", value.split(",")[2]);
           continue;
         }
+        if (key === "images") {
+          for (let i = 0; i < values.images.length; i++) {
+            propertyData.append("images[]", values.images[i]);
+          }
+          continue;
+        }
         propertyData.append(key, value);
       }
-      for (let i = 0; i < images.length; i++) {
-        propertyData.append("images[]", images[i]);
-      }
+
       createOwnProperty(propertyData);
     },
   });
+
+  const formikRef = useRef(formik.values);
+
+  useEffect(() => {
+    formikRef.current = formik.values;
+  }, [formik.values]);
+
+  const { ref } = usePlacesWidget({
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+    onPlaceSelected: (place) => {
+      formik.setValues({
+        ...formikRef.current,
+        address: `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[4].long_name}`,
+      });
+    },
+    options: {
+      types: ["address"],
+      // componentRestrictions: { country: "pe" },
+    },
+  });
+
+  const handleImages = (event) => {
+    const MAX_FILE_SIZE = 5120; //MB
+    const KB = 1024;
+    const images = Array.from(event.target.files);
+    images.forEach((image) => {
+      if (image.size / KB <= MAX_FILE_SIZE) {
+        formik.setValues({
+          ...formik.values,
+          images: [...formik.values.images, image],
+        });
+      } else {
+        alert("Some image size exceeds the allowed limit");
+      }
+    });
+  };
+
+  const handleDeleteImages = (index) => {
+    const newImages = [...formik.values.images];
+    newImages.splice(index, 1);
+    formik.setValues({
+      ...formik.values,
+      images: newImages,
+    });
+  };
 
   return (
     <Section size="xs">
@@ -331,20 +363,31 @@ export default function CreateRentalPropertySection() {
                 <blockquote className="quote">Only images, max 5MB</blockquote>
               </label>
               <div className="images-container">
-                {images.length === 0 ? (
+                {formik.values.images.length === 0 ? (
                   <div className="images-container__no-image">
                     No photos yet
                   </div>
                 ) : (
-                  images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={URL.createObjectURL(image)}
-                      className="images-container__image"
-                    />
+                  formik.values.images.map((image, index) => (
+                    <div key={index} className="images-container__container">
+                      <img
+                        src={URL.createObjectURL(image)}
+                        className="images-container__image"
+                      />
+                      <TiDelete
+                        size={"2rem"}
+                        className="images-container__delete"
+                        onClick={() => handleDeleteImages(index)}
+                      />
+                    </div>
                   ))
                 )}
               </div>
+              {formik.touched.images && formik.errors.images ? (
+                <div className="form__error">{formik.errors.images}</div>
+              ) : (
+                <div className="form__error"></div>
+              )}
             </div>
             <Button
               type="primary"

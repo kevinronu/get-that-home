@@ -17,37 +17,35 @@ function AuthenticatedLandlordApp() {
   return (
     <LandlordProvider>
       <Routes>
-        <Route path="/">
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="home" element={<HomePage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="properties">
-            <Route index element={<Navigate to="page/1" />} />
-            <Route path="page/:page" element={<PropertiesPage />} />
-          </Route>
-          <Route path="property">
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="properties">
+          <Route index element={<Navigate to="page/1" />} />
+          <Route path="page/:page" element={<PropertiesPage />} />
+        </Route>
+        <Route path="property">
+          <Route index element={<Navigate to="/property/create/rent" />} />
+          <Route path="create">
             <Route index element={<Navigate to="/property/create/rent" />} />
-            <Route path="create">
-              <Route index element={<Navigate to="/property/create/rent" />} />
-              <Route path="rent" element={<CreateRentalPropertyPage />} />
-              <Route path="sale" element={<CreateSalePropertyPage />} />
-            </Route>
-            <Route path="detail/:id" element={<PropertyDetailPage />} />
-            <Route path="edit">
-              <Route path="rent/:id" element={<EditRentPropertyPage />} />
-              <Route path="sale/:id" element={<EditSalePropertyPage />} />
-            </Route>
+            <Route path="rent" element={<CreateRentalPropertyPage />} />
+            <Route path="sale" element={<CreateSalePropertyPage />} />
           </Route>
-          <Route path="my_properties">
-            <Route index element={<Navigate to="active/page/1" />} />
-            <Route path="active">
-              <Route index element={<Navigate to="page/1" />} />
-              <Route path="page/:page" element={<MyActivePropertiesPage />} />
-            </Route>
-            <Route path="closed">
-              <Route index element={<Navigate to="page/1" />} />
-              <Route path="page/:page" element={<MyClosedPropertiesPage />} />
-            </Route>
+          <Route path="detail/:id" element={<PropertyDetailPage />} />
+          <Route path="edit">
+            <Route path="rent/:id" element={<EditRentPropertyPage />} />
+            <Route path="sale/:id" element={<EditSalePropertyPage />} />
+          </Route>
+        </Route>
+        <Route path="my_properties">
+          <Route index element={<Navigate to="active/page/1" />} />
+          <Route path="active">
+            <Route index element={<Navigate to="page/1" />} />
+            <Route path="page/:page" element={<MyActivePropertiesPage />} />
+          </Route>
+          <Route path="closed">
+            <Route index element={<Navigate to="page/1" />} />
+            <Route path="page/:page" element={<MyClosedPropertiesPage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

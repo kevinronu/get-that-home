@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
+import { createPortal } from "react-dom";
 
 import PropertyDetailPage from "./pages/PropertyDetailPage";
 import { AuthContext } from "./context/auth-context";
@@ -32,7 +33,8 @@ function UnauthenticatedApp() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      {isLoginModalActive && <LoginModal toggleModal={handleModal} />}
+      {isLoginModalActive &&
+        createPortal(<LoginModal toggleModal={handleModal} />, document.body)}
     </>
   );
 }

@@ -28,7 +28,7 @@ Welcome to Get That Home, a modern and intuitive frontend web application built 
 
 ## Backend Repository
 
-The backend for Get That Home is developed using Ruby on Rails and is available in a separate repository. You can find the backend repository [here](link_to_backend_repository). It's essential to start the backend server before using this frontend application.
+The backend for Get That Home is developed using Ruby on Rails and is available in a separate repository. You can find the backend repository [here](https://github.com/kevinronu/get-that-home-api). It's essential to start the backend server before using this frontend application.
 
 ## Installation and Setup
 

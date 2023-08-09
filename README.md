@@ -2,6 +2,10 @@
 
 Welcome to Get That Home, a modern and intuitive frontend web application built with React and Vite. This project aims to provide users with a seamless experience for finding their dream properties, whether for sale or rent. The application empowers both landlords and home seekers with powerful tools to interact with the real estate market efficiently.
 
+## Experience the Prototype
+
+🌐Explore the prototype here: [Get That Home](https://get-that-home.netlify.app)
+
 ## Features
 
 - **Property Listings**: Browse a diverse range of apartment and house properties available for sale or rent.

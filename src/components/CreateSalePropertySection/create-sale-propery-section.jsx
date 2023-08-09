@@ -81,9 +81,9 @@ export default function CreateSalePropertySection() {
       const propertyData = new FormData();
       for (const [key, value] of Object.entries(values)) {
         if (key === "address") {
-          propertyData.append("address", value.split(", ")[0]);
-          propertyData.append("city", value.split(", ")[1]);
-          propertyData.append("country", value.split(", ")[2]);
+          propertyData.append("address", value.split(", ")[0].trim());
+          propertyData.append("city", value.split(", ")[1].trim());
+          propertyData.append("country", value.split(", ")[2].trim());
           continue;
         }
         if (key === "images") {

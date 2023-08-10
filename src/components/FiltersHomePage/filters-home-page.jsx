@@ -7,7 +7,8 @@ import { PropertyContext } from "../../context/property-context";
 
 export default function FiltersHomePage() {
   const navigate = useNavigate();
-  const { datalistCity, handleFilters } = useContext(PropertyContext);
+  const { datalistCity, handleFilters, clearFilters } =
+    useContext(PropertyContext);
   const [formData, setFormData] = useState({
     address: "",
     propertyType: [],
@@ -28,6 +29,7 @@ export default function FiltersHomePage() {
   };
 
   const handleClick = () => {
+    clearFilters();
     handleFilters(formData);
     navigate("/properties");
   };

@@ -1,2 +1,2 @@
 export const tokenKey = "get-that-home-token";
-export const BASE_URI = "https://get-that-home-api-ueyw.onrender.com";
+export const BASE_URI = "http://get-that-home.up.railway.app";

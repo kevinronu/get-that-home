@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../Button";
 import { StyledDiv } from "./styles";
 import { PropertyContext } from "../../context/property-context";
+import { ALL_FILTERS_SELECTED } from "../../const/filters";
 
 export default function FiltersHomePage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function FiltersHomePage() {
   const [formData, setFormData] = useState({
     address: "",
     propertyType: [],
-    operationType: "all",
+    operationType: ALL_FILTERS_SELECTED,
   });
 
   const { address, propertyType, operationType } = formData;
@@ -57,7 +58,7 @@ export default function FiltersHomePage() {
           onChange={handleChange}
           className="select"
         >
-          <option value="all">Rent and buy</option>
+          <option value={ALL_FILTERS_SELECTED}>Rent and buy</option>
           <option value="rent">Rent</option>
           <option value="sale">Buy</option>
         </select>

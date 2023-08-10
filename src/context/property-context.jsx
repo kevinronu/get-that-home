@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getProperties } from "../services/property-service";
 import { filterProperties } from "../utils/utils";
+import { ALL_FILTERS_SELECTED } from "../const/filters";
 
 const PropertyContext = createContext();
 
@@ -22,7 +23,7 @@ function PropertyProvider(props) {
     petsAllowed: null,
     minArea: 0,
     maxArea: Infinity,
-    operationType: "all",
+    operationType: ALL_FILTERS_SELECTED,
   });
 
   useEffect(() => {
@@ -71,7 +72,7 @@ function PropertyProvider(props) {
       petsAllowed: null,
       minArea: 0,
       maxArea: Infinity,
-      operationType: "all",
+      operationType: ALL_FILTERS_SELECTED,
     });
   }
 

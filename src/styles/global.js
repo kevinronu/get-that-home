@@ -101,13 +101,7 @@ export const reset = css`
     background-color: transparent;
     color: inherit;
     display: block;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  input[type="checkbox"] {
-    appearance: checkbox;
-    -webkit-appearance: checkbox;
+    // appearance: none;
   }
 
   svg {

@@ -1,5 +1,5 @@
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
 import { TbCoin } from "react-icons/tb";
@@ -118,11 +118,13 @@ export default function EditRentalPropertySection() {
     },
   });
 
+  const { setValues } = formik;
+
   useEffect(() => {
     if (Object.keys(property).length === 0) return;
 
-    formik.setValues({
-      ...formik.values,
+    setValues((prevValues) => ({
+      ...prevValues,
       address: `${property.address}, ${property.city}, ${property.country}`,
       monthly_rent: property.monthly_rent,
       maintenance: property.maintenance,
@@ -132,22 +134,17 @@ export default function EditRentalPropertySection() {
       area: property.area,
       pets_allowed: property.pets_allowed,
       about: property.about,
-    });
-  }, [property]);
-
-  const formikRef = useRef(formik.values);
-
-  useEffect(() => {
-    formikRef.current = formik.values;
-  }, [formik.values]);
+    }));
+  }, [property, setValues]);
 
   const { ref } = usePlacesWidget({
     apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {
-      formik.setValues({
-        ...formikRef.current,
-        address: `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[4].long_name}`,
-      });
+      console.log(place);
+      setValues((prevValues) => ({
+        ...prevValues,
+        address: `${place.formatted_address}`,
+      }));
     },
     options: {
       types: ["address"],
@@ -161,10 +158,10 @@ export default function EditRentalPropertySection() {
     const images = Array.from(event.target.files);
     images.forEach((image) => {
       if (image.size / KB <= MAX_FILE_SIZE) {
-        formik.setValues({
-          ...formik.values,
-          images: [...formik.values.images, image],
-        });
+        setValues((prevValues) => ({
+          ...prevValues,
+          images: [...prevValues.images, image],
+        }));
       } else {
         alert("Some image size exceeds the allowed limit");
       }
@@ -174,11 +171,13 @@ export default function EditRentalPropertySection() {
   const handleDeleteImages = (index) => {
     const newImages = [...formik.values.images];
     newImages.splice(index, 1);
-    formik.setValues({
-      ...formik.values,
+    setValues((prevValues) => ({
+      ...prevValues,
       images: newImages,
-    });
+    }));
   };
+
+  // console.log("render");
 
   return (
     <Section size="xs">

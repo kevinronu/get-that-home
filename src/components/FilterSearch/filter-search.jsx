@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import { useContext, useEffect, useState } from "react";
 import { TfiSearch } from "react-icons/tfi";
+import { useNavigate } from "react-router-dom";
 
 import { StyledContainer } from "./styles";
 import { PropertyContext } from "../../context/property-context";
 
 export default function FilterSearch() {
+  const navigate = useNavigate();
   const { datalist, filters, setFilters } = useContext(PropertyContext);
   const [query, setQuery] = useState("");
 
@@ -16,11 +18,12 @@ export default function FilterSearch() {
 
     const setFilter = () => {
       setFilters((prevFilters) => ({ ...prevFilters, address: query }));
+      navigate("/properties/page/1");
     };
 
     const timerId = setTimeout(setFilter, 1000);
     return () => clearTimeout(timerId);
-  }, [query, setFilters]);
+  }, [query, setFilters, navigate]);
 
   return (
     <StyledContainer>

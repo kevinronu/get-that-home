@@ -107,6 +107,7 @@ function PropertyProvider(props) {
     updateProperty,
     deleteProperty,
     handleFilters,
+    setFilters,
   };
 
   return <PropertyContext.Provider value={value} {...props} />;

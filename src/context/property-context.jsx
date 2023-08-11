@@ -15,14 +15,14 @@ function PropertyProvider(props) {
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [filters, setFilters] = useState({
     address: "",
-    minPrice: 0,
-    maxPrice: Infinity,
+    minPrice: "",
+    maxPrice: "",
     propertyType: [],
     minBeds: 0,
     minBaths: 0,
     petsAllowed: null,
-    minArea: 0,
-    maxArea: Infinity,
+    minArea: "",
+    maxArea: "",
     operationType: ALL_FILTERS_SELECTED,
   });
 
@@ -64,14 +64,14 @@ function PropertyProvider(props) {
   function clearFilters() {
     setFilters({
       address: "",
-      minPrice: 0,
-      maxPrice: Infinity,
+      minPrice: "",
+      maxPrice: "",
       propertyType: [],
       minBeds: 0,
       minBaths: 0,
       petsAllowed: null,
-      minArea: 0,
-      maxArea: Infinity,
+      minArea: "",
+      maxArea: "",
       operationType: ALL_FILTERS_SELECTED,
     });
   }

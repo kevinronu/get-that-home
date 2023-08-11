@@ -13,8 +13,8 @@ export default function FilterPrice() {
   const [showFilter, setShowFilter] = useState(false);
 
   const [formData, setFormData] = useState({
-    minPrice: 0,
-    maxPrice: Infinity,
+    minPrice: "",
+    maxPrice: "",
   });
 
   useEffect(() => {
@@ -42,11 +42,11 @@ export default function FilterPrice() {
   }
 
   function calcText() {
-    if (minPrice === 0 && maxPrice === Infinity) {
+    if (minPrice === "" && maxPrice === "") {
       return "PRICE";
-    } else if (minPrice != 0 && maxPrice === Infinity) {
+    } else if (minPrice != "" && maxPrice === "") {
       return `>= $${minPrice}k`;
-    } else if (minPrice === 0 && maxPrice != Infinity) {
+    } else if (minPrice === "" && maxPrice != "") {
       return `<= $${maxPrice}k`;
     } else {
       return `$${minPrice}k - $${maxPrice}k`;

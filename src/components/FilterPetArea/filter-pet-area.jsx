@@ -13,8 +13,8 @@ export default function FilterPetArea() {
   const { filters, handleFilters } = useContext(PropertyContext);
   const [formData, setFormData] = useState({
     petsAllowed: false,
-    minArea: 0,
-    maxArea: Infinity,
+    minArea: "",
+    maxArea: "",
   });
 
   useEffect(() => {

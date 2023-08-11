@@ -1,5 +1,5 @@
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
 import { TbCoin } from "react-icons/tb";
@@ -87,9 +87,15 @@ export default function CreateRentalPropertySection() {
       const propertyData = new FormData();
       for (const [key, value] of Object.entries(values)) {
         if (key === "address") {
-          propertyData.append("address", value.split(", ")[0].trim());
-          propertyData.append("city", value.split(", ")[1].trim());
-          propertyData.append("country", value.split(", ")[2].trim());
+          const pattern = /\s\d{3,}$/; // Format for Peruvian address, removes the postal code in the city
+          const arrayAddress = value.split(", ");
+
+          propertyData.append("address", arrayAddress[0].trim());
+          propertyData.append(
+            "city",
+            arrayAddress[1].trim().replace(pattern, "").trim()
+          );
+          propertyData.append("country", arrayAddress.at(-1).trim());
           continue;
         }
         if (key === "images") {
@@ -105,19 +111,15 @@ export default function CreateRentalPropertySection() {
     },
   });
 
-  const formikRef = useRef(formik.values);
-
-  useEffect(() => {
-    formikRef.current = formik.values;
-  }, [formik.values]);
+  const { setValues } = formik;
 
   const { ref } = usePlacesWidget({
     apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {
-      formik.setValues({
-        ...formikRef.current,
-        address: `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[4].long_name}`,
-      });
+      setValues((prevValues) => ({
+        ...prevValues,
+        address: `${place.formatted_address}`,
+      }));
     },
     options: {
       types: ["address"],
@@ -131,10 +133,10 @@ export default function CreateRentalPropertySection() {
     const images = Array.from(event.target.files);
     images.forEach((image) => {
       if (image.size / KB <= MAX_FILE_SIZE) {
-        formik.setValues({
-          ...formik.values,
-          images: [...formik.values.images, image],
-        });
+        setValues((prevValues) => ({
+          ...prevValues,
+          images: [...prevValues.images, image],
+        }));
       } else {
         alert("Some image size exceeds the allowed limit");
       }
@@ -144,10 +146,10 @@ export default function CreateRentalPropertySection() {
   const handleDeleteImages = (index) => {
     const newImages = [...formik.values.images];
     newImages.splice(index, 1);
-    formik.setValues({
-      ...formik.values,
+    setValues((prevValues) => ({
+      ...prevValues,
       images: newImages,
-    });
+    }));
   };
 
   return (

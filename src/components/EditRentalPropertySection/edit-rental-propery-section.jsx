@@ -100,9 +100,15 @@ export default function EditRentalPropertySection() {
       const propertyData = new FormData();
       for (const [key, value] of Object.entries(values)) {
         if (key === "address") {
-          propertyData.append("address", value.split(", ")[0].trim());
-          propertyData.append("city", value.split(", ")[1].trim());
-          propertyData.append("country", value.split(", ")[2].trim());
+          const pattern = /\s\d{3,}$/; // Format for Peruvian address, removes the postal code in the city
+          const arrayAddress = value.split(", ");
+
+          propertyData.append("address", arrayAddress[0].trim());
+          propertyData.append(
+            "city",
+            arrayAddress[1].trim().replace(pattern, "").trim()
+          );
+          propertyData.append("country", arrayAddress.at(-1).trim());
           continue;
         }
         if (key === "images") {
@@ -140,7 +146,6 @@ export default function EditRentalPropertySection() {
   const { ref } = usePlacesWidget({
     apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {
-      console.log(place);
       setValues((prevValues) => ({
         ...prevValues,
         address: `${place.formatted_address}`,
@@ -358,7 +363,7 @@ export default function EditRentalPropertySection() {
                 Pets Allowed
               </label>
               <blockquote className="quote">
-                Allowing pets increases the likehood of renters liking the
+                Allowing pets increases the likelihood of renters liking the
                 property by 9001%. It also makes you a better person.
               </blockquote>
             </div>

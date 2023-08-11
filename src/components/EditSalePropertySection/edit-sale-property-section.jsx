@@ -1,5 +1,5 @@
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
 import { TbCoin } from "react-icons/tb";
@@ -94,9 +94,15 @@ export default function EditSalePropertySection() {
       const propertyData = new FormData();
       for (const [key, value] of Object.entries(values)) {
         if (key === "address") {
-          propertyData.append("address", value.split(", ")[0].trim());
-          propertyData.append("city", value.split(", ")[1].trim());
-          propertyData.append("country", value.split(", ")[2].trim());
+          const pattern = /\s\d{3,}$/; // Format for Peruvian address, removes the postal code in the city
+          const arrayAddress = value.split(", ");
+
+          propertyData.append("address", arrayAddress[0].trim());
+          propertyData.append(
+            "city",
+            arrayAddress[1].trim().replace(pattern, "").trim()
+          );
+          propertyData.append("country", arrayAddress.at(-1).trim());
           continue;
         }
         if (key === "images") {
@@ -112,11 +118,13 @@ export default function EditSalePropertySection() {
     },
   });
 
+  const { setValues } = formik;
+
   useEffect(() => {
     if (Object.keys(property).length === 0) return;
 
-    formik.setValues({
-      ...formik.values,
+    setValues((prevValues) => ({
+      ...prevValues,
       address: `${property.address}, ${property.city}, ${property.country}`,
       price: property.price,
       property_type: property.property_type,
@@ -124,22 +132,16 @@ export default function EditSalePropertySection() {
       bathrooms: property.bathrooms,
       area: property.area,
       about: property.about,
-    });
-  }, [property]);
-
-  const formikRef = useRef(formik.values);
-
-  useEffect(() => {
-    formikRef.current = formik.values;
-  }, [formik.values]);
+    }));
+  }, [property, setValues]);
 
   const { ref } = usePlacesWidget({
     apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     onPlaceSelected: (place) => {
-      formik.setValues({
-        ...formikRef.current,
-        address: `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[4].long_name}`,
-      });
+      setValues((prevValues) => ({
+        ...prevValues,
+        address: `${place.formatted_address}`,
+      }));
     },
     options: {
       types: ["address"],
@@ -153,10 +155,10 @@ export default function EditSalePropertySection() {
     const images = Array.from(event.target.files);
     images.forEach((image) => {
       if (image.size / KB <= MAX_FILE_SIZE) {
-        formik.setValues({
-          ...formik.values,
-          images: [...formik.values.images, image],
-        });
+        setValues((prevValues) => ({
+          ...prevValues,
+          images: [...prevValues.images, image],
+        }));
       } else {
         alert("Some image size exceeds the allowed limit");
       }
@@ -166,10 +168,10 @@ export default function EditSalePropertySection() {
   const handleDeleteImages = (index) => {
     const newImages = [...formik.values.images];
     newImages.splice(index, 1);
-    formik.setValues({
-      ...formik.values,
+    setValues((prevValues) => ({
+      ...prevValues,
       images: newImages,
-    });
+    }));
   };
 
   return (

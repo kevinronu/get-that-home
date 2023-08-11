@@ -329,7 +329,7 @@ export default function CreateRentalPropertySection() {
                 Pets Allowed
               </label>
               <blockquote className="quote">
-                Allowing pets increases the likehood of renters liking the
+                Allowing pets increases the likelihood of renters liking the
                 property by 9001%. It also makes you a better person.
               </blockquote>
             </div>

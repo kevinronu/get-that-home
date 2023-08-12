@@ -31,11 +31,21 @@ function Footer() {
             </div>
             <div className="source-code">
               <p className="title">Source code:</p>
-              <Link className="github__link">
+              <Link
+                className="github__link"
+                to={"https://github.com/kevinronu/get-that-home-api"}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <DiRuby size={"1.125rem"} />
                 <p>Ruby on Rails REST API</p>
               </Link>
-              <Link className="github__link">
+              <Link
+                className="github__link"
+                to={"https://github.com/kevinronu/get-that-home"}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <DiReact size={"1.125rem"} />
                 <p>React Responsive SPA</p>
               </Link>

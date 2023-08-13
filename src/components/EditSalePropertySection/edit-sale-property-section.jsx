@@ -365,6 +365,7 @@ export default function EditSalePropertySection() {
                       <img
                         src={URL.createObjectURL(image)}
                         className="images-container__image"
+                        alt={`image-${index}`}
                       />
                       <TiDelete
                         size={"2rem"}

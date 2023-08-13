@@ -33,7 +33,7 @@ export function Slideshow({ images = [] }) {
     <>
       <StyledDiv>
         <LeftArrowContainer onClick={goToPrevious}>❰</LeftArrowContainer>
-        <StyledImg src={images[currentIndex]} />
+        <StyledImg src={images[currentIndex]} alt={`photo-${currentIndex}`} />
         <RightArrowContainer onClick={goToNext}>❱</RightArrowContainer>
       </StyledDiv>
       <DotsContainer>

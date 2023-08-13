@@ -131,9 +131,13 @@ function LandlordPropertyCard({ property, isOwner }) {
       >
         {renderOperationType[operation_type]}
         {images.length === 0 ? (
-          <img src={DefaultImage} className="photo" />
+          <img src={DefaultImage} className="photo" alt={`default-photo`} />
         ) : (
-          <img src={images[0]} className="photo" />
+          <img
+            src={images[0]}
+            className="photo"
+            alt={`first-photo-property-${id}`}
+          />
         )}
         <div className="info-title">
           <div className="info-title__rent">

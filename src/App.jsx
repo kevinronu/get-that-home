@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, lazy, Suspense } from "react";
 import { Global, ThemeProvider, css } from "@emotion/react";
 
 import {
@@ -8,9 +8,12 @@ import {
   lightTheme,
 } from "./styles/themes";
 import { AuthContext } from "./context/auth-context";
-import UnauthenticatedApp from "./UnauthenticatedApp";
-import AuthenticatedLandlordApp from "./AuthenticatedLandlordApp";
-import AuthenticatedSeekerApp from "./AuthenticatedSeekerApp";
+import LoadingPage from "./pages/LoadingPage";
+const UnauthenticatedApp = lazy(() => import("./UnauthenticatedApp"));
+const AuthenticatedLandlordApp = lazy(() =>
+  import("./AuthenticatedLandlordApp")
+);
+const AuthenticatedSeekerApp = lazy(() => import("./AuthenticatedSeekerApp"));
 
 function App() {
   const [darkMode] = useState(isDarkModeActive());
@@ -23,13 +26,15 @@ function App() {
           ${GlobalThemeStyle(darkMode ? darkTheme : lightTheme)}
         `}
       />
-      {!user ? (
-        <UnauthenticatedApp />
-      ) : user.role === "landlord" ? (
-        <AuthenticatedLandlordApp />
-      ) : (
-        <AuthenticatedSeekerApp />
-      )}
+      <Suspense fallback={<LoadingPage />}>
+        {!user ? (
+          <UnauthenticatedApp />
+        ) : user.role === "landlord" ? (
+          <AuthenticatedLandlordApp />
+        ) : (
+          <AuthenticatedSeekerApp />
+        )}
+      </Suspense>
     </ThemeProvider>
   );
 }

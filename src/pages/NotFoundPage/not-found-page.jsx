@@ -5,7 +5,6 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { AuthContext } from "../../context/auth-context";
 import Section from "../../layout/Section";
-import Container from "../../layout/Container";
 import { StyledContainer } from "./styles";
 
 export default function NotFoundPage() {

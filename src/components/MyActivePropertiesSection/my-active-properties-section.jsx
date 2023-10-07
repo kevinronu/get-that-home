@@ -14,6 +14,7 @@ import Pagination from "../Pagination";
 import LandlordPropertyCard from "../LandlordPropertyCard";
 import Anchor from "../Anchor";
 import Section from "../../layout/Section";
+import { MAX_PAGES_GENERATED } from "../../const/pagination";
 
 export default function MyActivePropertiesSection() {
   const { page } = useParams();
@@ -71,9 +72,11 @@ export default function MyActivePropertiesSection() {
                 })}
             </PropertiesContainer>
             <Pagination
-              quantityPerPage={quantityPerPage}
+              location={"/my_properties/active"}
+              currentPage={Number(page)}
               totalQuantity={totalQuantity}
-              location={"/my_properties/closed"}
+              quantityPerPage={quantityPerPage}
+              maxPagesGenerated={MAX_PAGES_GENERATED}
             />
           </>
         </Container>

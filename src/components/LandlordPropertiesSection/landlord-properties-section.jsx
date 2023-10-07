@@ -9,6 +9,7 @@ import Pagination from "../Pagination";
 import { LandlordContext } from "../../context/landlord-context";
 import { PropertyContext } from "../../context/property-context";
 import FilterPropertiesPage from "../FiltersPropertiesPage";
+import { MAX_PAGES_GENERATED } from "../../const/pagination";
 
 export default function LandlordPropertiesSection() {
   const { page } = useParams();
@@ -45,9 +46,11 @@ export default function LandlordPropertiesSection() {
             })}
           </PropertiesContainer>
           <Pagination
-            quantityPerPage={quantityPerPage}
-            totalQuantity={totalQuantity}
             location={"/properties"}
+            currentPage={Number(page)}
+            totalQuantity={totalQuantity}
+            quantityPerPage={quantityPerPage}
+            maxPagesGenerated={MAX_PAGES_GENERATED}
           />
         </>
       </Container>

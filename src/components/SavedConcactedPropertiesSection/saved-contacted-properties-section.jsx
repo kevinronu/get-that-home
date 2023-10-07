@@ -13,6 +13,7 @@ import { SeekerContext } from "../../context/seeker-context";
 import Container from "../../layout/Container/container";
 import Pagination from "../Pagination";
 import Section from "../../layout/Section";
+import { MAX_PAGES_GENERATED } from "../../const/pagination";
 
 export default function SavedContactedPropertiesSection() {
   const { page } = useParams();
@@ -62,9 +63,11 @@ export default function SavedContactedPropertiesSection() {
               })}
             </PropertiesContainer>
             <Pagination
-              quantityPerPage={quantityPerPage}
-              totalQuantity={totalQuantity}
               location={"/saved_properties/contacted"}
+              currentPage={Number(page)}
+              totalQuantity={totalQuantity}
+              quantityPerPage={quantityPerPage}
+              maxPagesGenerated={MAX_PAGES_GENERATED}
             />
           </>
         </Container>

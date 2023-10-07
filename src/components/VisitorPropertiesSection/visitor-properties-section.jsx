@@ -8,6 +8,7 @@ import VisitorPropertyCard from "../VisitorPropertyCard";
 import Container from "../../layout/Container";
 import Section from "../../layout/Section";
 import Pagination from "../Pagination";
+import { MAX_PAGES_GENERATED } from "../../const/pagination";
 
 export default function VisitorPropertiesSection() {
   const { page } = useParams();
@@ -38,9 +39,11 @@ export default function VisitorPropertiesSection() {
             })}
           </PropertiesContainer>
           <Pagination
-            quantityPerPage={quantityPerPage}
-            totalQuantity={totalQuantity}
             location={"/properties"}
+            currentPage={Number(page)}
+            totalQuantity={totalQuantity}
+            quantityPerPage={quantityPerPage}
+            maxPagesGenerated={MAX_PAGES_GENERATED}
           />
         </>
       </Container>

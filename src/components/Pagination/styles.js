@@ -20,6 +20,12 @@ export const StyledNav = styled.nav`
     line-height: 1.25rem;
   }
 
+  .icon {
+    padding: 0.2rem 0.15rem;
+    border-radius: 0.25rem;
+    border: 0.0625rem solid ${(props) => props.theme.colors.background.light};
+  }
+
   .active {
     padding: 0.35rem 0.75rem;
     border-radius: 0.25rem;

@@ -14,6 +14,7 @@ import Pagination from "../Pagination";
 import { LandlordContext } from "../../context/landlord-context";
 import Anchor from "../Anchor";
 import Section from "../../layout/Section";
+import { MAX_PAGES_GENERATED } from "../../const/pagination";
 
 export default function MyClosedPropertiesSection() {
   const { page } = useParams();
@@ -71,9 +72,11 @@ export default function MyClosedPropertiesSection() {
                 })}
             </PropertiesContainer>
             <Pagination
-              quantityPerPage={quantityPerPage}
-              totalQuantity={totalQuantity}
               location={"/my_properties/closed"}
+              currentPage={Number(page)}
+              totalQuantity={totalQuantity}
+              quantityPerPage={quantityPerPage}
+              maxPagesGenerated={MAX_PAGES_GENERATED}
             />
           </>
         </Container>
